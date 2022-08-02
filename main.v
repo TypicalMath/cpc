@@ -68,30 +68,121 @@ Fixpoint val  (model : nat -> bool) (f: Formula) : bool:=
     | bot => false
     end.
 
-Definition Sval (model : nat -> bool) (S:Ensemble Formula)  : Prop:=
-    forall (f:Formula), (In Formula S f -> (val model f = true)).
+(*a model satisfying a set of formulae*)
+(*model|=Gamma*)
+Definition mSsf (model : nat -> bool) (Gamma:Ensemble Formula)  : Prop:=
+    forall (f:Formula), (In Formula Gamma f -> (val model f = true)).
 
 
-Axiom Zorn_Lemma:
+(*All models satisfying elements of Gamma are satisfying F*)
+(*Gamma|=f*)
+Definition sfSf (Gamma: Ensemble Formula) (f:Formula) : Prop:=
+    forall (model: nat ->bool),( mSsf model Gamma -> val model f = true).
 
 
-Lemma Existence_of_Model: forall (C : Ensemble Formula) (f: Formula),
- ((In Formula C f) -> ~((ND C f )/\(ND C (neg f))))-> exists (model : nat -> bool), Sval model C.  
- 
- (*for every consistent set there exists
- a model wich satisfies the whole set*).
-Proof.
+
+
+
+
+
+
+(*Proof by Contradiction*)
+Axiom pbc : forall (P: Prop), (~P -> False) -> P.
+
+
+
+
+
+
+(*Consistency:*)
+Inductive Cons : Ensemble Formula -> Prop :=
+|cons1 (Gamma: Ensemble Formula) (H:~(ND Gamma bot)): Cons Gamma.
+
+
+(*Lemma 1.4.5 (used in main proof!) *)
+
+Lemma ConsSyns0: forall (Gamma:Ensemble Formula) (f:Formula),
+~Cons(Union Formula Gamma (Singleton Formula (neg f))) <-> ND Gamma f.
+Proof. 
+
+
+Axiom contraposition : forall (P Q :Prop), (P <-> ~Q) <-> (~P <-> Q).
+Lemma ConsSyns: forall (Gamma:Ensemble Formula) (f:Formula),
+Cons(Union Formula Gamma (Singleton Formula (neg f))) <-> ~ND Gamma f.
+ Proof.
+  intros Gamma f.
+  apply contraposition.  apply ConsSyns0.
+
+
+
+
+
+
+(*Existence of Model:*)  
+
+Inductive maxCons : Ensemble Formula -> Prop :=
+|max1 (Gamma : Ensemble Formula) (H:Cons Gamma) 
+(H1:forall (Gammap : Ensemble Formula), Included Formula Gamma Gammap
+    /\ Cons Gamma -> Included Formula Gammap Gamma ): maxCons Gamma.
+
+(*Zorn's Lemma:*)
+
+
+
+Lemma Ex_of_Max : forall (Gamma:Ensemble Formula),
+    Cons Gamma -> exists (Gammap:Ensemble Formula), 
+    Included Formula Gamma Gammap /\ maxCons Gammap.
+Proof. intros Gamma H.  
+
+ Admitted.
+
+(*Function in Lemma 1.4.11:*)
+
     
+
+
+(*The Lemma:*)
+Lemma Existence_of_Model: forall (Gamma : Ensemble Formula),
+Cons Gamma -> exists (model : nat -> bool), mSsf model Gamma. 
+Proof. Admitted.
+
+
+
+
+(*My own Lemma!*)
+Lemma UnionR : forall (Gamma:Ensemble Formula) (f:Formula) (model: nat -> bool),
+mSsf model (Union Formula Gamma (Singleton Formula(neg f))) ->(mSsf model Gamma  /\ val model f = false).
+Proof.
+    intros Gamma f model H.
+    split.
+    +unfold mSsf. unfold mSsf in H.
+        intros f0 H1. apply H. apply Union_introl.  
+        apply H1.
+    +unfold mSsf in H. 
+        assert (H1: val model (neg f) = true -> val model f = false).
+        {intros H2. simpl in H2. assert (H3:forall (b:bool), negb b=true -> b= false).
+        {intros b. intros H4. induction b. +simpl in H4. rewrite -> H4. reflexivity.
+        +reflexivity.  }
+        apply H3 in H2.
+        apply H2. }
+        apply H1. apply H. apply Union_intror. apply In_singleton. 
+        
 Qed.
 
 
-Theorem Completeness: forall (f:Formula), 
-forall (model:nat->bool), (val model f)=true -> ND (Empty_set Formula)  f.
+
+
+(*The Theorem!!!*)
+Theorem Completeness: forall (Gamma:Ensemble Formula) (f:Formula) , 
+sfSf Gamma f -> ND Gamma f.
 Proof.
-intros f. intros model. intros H.
-
-
-    
+intros Gamma f. intros H.
+apply pbc. intros H1. apply ConsSyns in H1. 
+apply Existence_of_Model in H1.
+inversion H1.
+apply UnionR in H0. 
+unfold sfSf in H. destruct H0. apply H in H0.
+rewrite -> H2 in H0. discriminate.
 Qed.
 
 
