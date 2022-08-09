@@ -1,5 +1,5 @@
 From Coq Require Import Sets.Ensembles.
-
+From Coq Require Import Powerset_facts.
 (*Formulas: *)
 
 Inductive Formula : Type :=
@@ -26,9 +26,9 @@ Inductive ND : Ensemble Formula -> Formula -> Prop :=
     | negE (C:Ensemble Formula) (f :Formula) (H1: ND C f) (H2: ND C (neg f)): ND C bot
     | negI (C:Ensemble Formula) (f :Formula) (H: ND (Union Formula C (Singleton Formula f)) bot ): ND C (neg f) (*Momkene context ghalat bashe!!!*)
     | botE (C:Ensemble Formula) (f:Formula) (H:ND C bot):ND C f
-    | dnegE (C:Ensemble Formula) (f:Formula) (H:ND C (neg (neg f)) ):ND C f.
+    | RAA (C:Ensemble Formula) (f:Formula) (H:ND (Union Formula C (Singleton Formula (neg f))) bot):ND C f.
 
-(*Helbert: *)
+(*Hilbert: *)
 
 Inductive Hilb : Ensemble Formula -> Formula -> Prop :=
     | Hax (C:Ensemble Formula) (f: Formula) (H:In Formula C  f) : Hilb C f
@@ -45,18 +45,6 @@ Inductive Hilb : Ensemble Formula -> Formula -> Prop :=
     | MP (C:Ensemble Formula) (f1 f2:Formula) (H1:Hilb C (imp f1 f2)) (H2:Hilb C (f1)): Hilb C f2.
 
 (*Semantics: *)
-
-
-
-
-(*semantic ma yek seri tavabee hastan az formule
- haye atomi be majmooe maghadir booli
- be hamrahe yek tabee e dge ke az rooye oon seri
- tavabeee ke taarif kardim miad yek maanashenasi
- kamel baraye ma taarif mikone*)
-
-
-
 
 Fixpoint val  (model : nat -> bool) (f: Formula) : bool:=
     match f with
@@ -95,60 +83,150 @@ Axiom pbc : forall (P: Prop), (~P -> False) -> P.
 
 
 (*Consistency:*)
-Inductive Cons : Ensemble Formula -> Prop :=
-|cons1 (Gamma: Ensemble Formula) (H:~(ND Gamma bot)): Cons Gamma.
+(*Inductive Cons1 : Ensemble Formula -> Prop :=
+|cons1 (Gamma: Ensemble Formula) (H:~(ND Gamma bot)): Cons1 Gamma.*)
+Definition Cons (Gamma : Ensemble Formula) : Prop :=
+~(ND Gamma bot).
+
+Definition iCons (Gamma : Ensemble Formula) : Prop :=
+(ND Gamma bot).
+
+
+
+
+(*needed to prove the next lemma*)
+Lemma about_Union: forall (A:Ensemble Formula)(f1 f2: Formula),
+    Union Formula (Union Formula A (Singleton Formula f1)) (Singleton Formula  f2)=
+    Union Formula (Union Formula A (Singleton Formula  f2)) (Singleton Formula f1).
+    Proof. intros A f1 f2. rewrite ->Union_associative. 
+    rewrite ->Union_commutative with (A:=(Singleton Formula f1)).
+    rewrite ->Union_associative. reflexivity.  
+Qed.
+
+Lemma Weakening: forall(C:Ensemble Formula) (f1 f2:Formula), ND C f1 -> ND (Union Formula C (Singleton Formula f2)) f1.
+Proof.
+    intros C f1 f2 H. induction H.
+    +apply ax. apply Union_introl. apply H.
+    +apply conjE1 in IHND. apply IHND.
+    +apply conjE2 in IHND. apply IHND.
+    +apply conjI. -apply IHND1. -apply IHND2.
+    +apply disjE with (C:=Union Formula C (Singleton Formula f2)) (f1:=f1) (f2:=f0).
+        -rewrite ->about_Union. apply IHND1.
+        -rewrite ->about_Union. apply IHND2.
+        -apply IHND3.
+    +apply disjI1. apply IHND.
+    +apply disjI2. apply IHND.
+    +apply impE with (f1:=f1) (f2:=f0).
+        -apply IHND1. -apply IHND2.
+    +apply impI. rewrite ->about_Union. apply IHND.
+    +apply negE with(f:=f). -apply IHND1. -apply IHND2.
+    +apply negI. rewrite ->about_Union. apply IHND.
+    +apply botE. apply IHND.
+    +apply RAA. rewrite ->about_Union. apply IHND.
+    Qed. 
 
 
 (*Lemma 1.4.5 (used in main proof!) *)
-
 Lemma ConsSyns0: forall (Gamma:Ensemble Formula) (f:Formula),
-~Cons(Union Formula Gamma (Singleton Formula (neg f))) <-> ND Gamma f.
-Proof. 
+iCons(Union Formula Gamma (Singleton Formula (neg f))) <-> ND Gamma f.
+Proof.
+    intros Gamma f.
+    split.
+    +intros H. unfold iCons in H. apply RAA in H. apply H.
+    +intros H. unfold iCons. apply negE with (f:=f). -apply Weakening. apply H. 
+        -apply ax. apply Union_intror. apply In_singleton.
+    Qed.
 
-
-Axiom contraposition : forall (P Q :Prop), (P <-> ~Q) <-> (~P <-> Q).
+Axiom contraposition : forall (P Q :Prop), (P <-> Q) -> (~P <-> ~Q).
 Lemma ConsSyns: forall (Gamma:Ensemble Formula) (f:Formula),
-Cons(Union Formula Gamma (Singleton Formula (neg f))) <-> ~ND Gamma f.
- Proof.
+~iCons(Union Formula Gamma (Singleton Formula (neg f))) <-> ~ND Gamma f.
+Proof.
   intros Gamma f.
-  apply contraposition.  apply ConsSyns0.
+  apply contraposition. apply ConsSyns0.
+  Qed.
 
 
 
 
-
-
+(*/neat*)
 (*Existence of Model:*)  
-
-Inductive maxCons : Ensemble Formula -> Prop :=
-|max1 (Gamma : Ensemble Formula) (H:Cons Gamma) 
-(H1:forall (Gammap : Ensemble Formula), Included Formula Gamma Gammap
-    /\ Cons Gamma -> Included Formula Gammap Gamma ): maxCons Gamma.
-
 (*Zorn's Lemma:*)
+Definition relation (U:Type) := U -> U -> Prop.
+Definition reflexive (U:Type) (R : relation U) : Prop :=
+    forall x:U, R x x.
+Definition transitive (U:Type) (R : relation U) : Prop :=
+    forall x y z:U, R x y->R y z -> R x z.
+Definition symmetric (U:Type) (R : relation U) : Prop :=
+    forall x y:U, R x y-> R y x.
+Definition antisymmetric (U:Type) (R : relation U) : Prop :=
+    forall x y:U, R x y-> R y x-> x=y.
+Definition pao (U:Type) (R: relation U ) : Prop :=
+    reflexive U R /\ transitive U R /\ antisymmetric U R.
+
+Definition chain (U:Type) (R: relation U) (S : Ensemble U)  : Prop :=
+    forall x y:U, In U S x -> In U S y -> (R x y \/ R y x).
+
+Definition maximal (U:Type) (x:U) (R:relation U) : Prop:=
+    forall y:U, R x y -> x=y.
+
+Definition chain_sup (U:Type) (R: relation U) (S:Ensemble U) (sup:U): Prop:=
+    chain U R S -> forall x:U, In U S x -> R x sup.
 
 
+Axiom Zorn's_Lemma: forall (U:Type) (R:relation U), 
+    pao U R /\ (forall (S: Ensemble U), (chain U R S -> exists (sup:U), chain_sup U R S sup) )
+    -> exists (maxim:U), maximal U maxim R.
+
+
+(*Lemma 1.4.10:*)
+
+Definition Inc : relation (Ensemble Formula) := Included Formula.
+
+Lemma Ex_of_Max0: forall (Gamma : Ensemble Formula), 
+    Cons Gamma -> (exists (Gammap : Ensemble Formula),
+        (maximal (Ensemble Formula) Gammap Inc ) /\ Inc Gamma Gammap).
+Proof.
+    intros Gamma H. exists Gamma. split.    
+(*Here!
+You Probably need to change statement of the Lemma, maybe you should break it
+into several Lemmas in order to make it possible to prove.*)
+
+
+
+
+
+
+
+
+(*Previous attemp for Lemma 1.4.10!:*)
+Definition maxCons (Gamma : Ensemble Formula) : Prop:=
+    Cons Gamma /\ forall (Gammap : Ensemble Formula), Included Formula Gamma Gammap
+        /\ Cons Gammap -> Included Formula Gammap Gamma.
+
+Definition TheSet (Gamma : Ensemble Formula) (X:Ensemble Formula) : Prop :=
+    Cons X /\ Included Formula Gamma X.
 
 Lemma Ex_of_Max : forall (Gamma:Ensemble Formula),
     Cons Gamma -> exists (Gammap:Ensemble Formula), 
     Included Formula Gamma Gammap /\ maxCons Gammap.
-Proof. intros Gamma H.  
-
  Admitted.
 
 (*Function in Lemma 1.4.11:*)
 
-    
+Axiom TheV : nat->bool.
+Axiom VProp : forall (n : nat), TheV n=true <-> In Formula Gamma (atom n)  
 
+
+Definition The (x : nat) : Prop := False.
 
 (*The Lemma:*)
 Lemma Existence_of_Model: forall (Gamma : Ensemble Formula),
-Cons Gamma -> exists (model : nat -> bool), mSsf model Gamma. 
+~iCons Gamma -> exists (model : nat -> bool), mSsf model Gamma. 
 Proof. Admitted.
 
 
 
-
+(*neat/*)
 (*My own Lemma!*)
 Lemma UnionR : forall (Gamma:Ensemble Formula) (f:Formula) (model: nat -> bool),
 mSsf model (Union Formula Gamma (Singleton Formula(neg f))) ->(mSsf model Gamma  /\ val model f = false).
