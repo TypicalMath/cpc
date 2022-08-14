@@ -76,7 +76,7 @@ Definition sfSf (Gamma: Ensemble Formula) (f:Formula) : Prop:=
 
 (*Proof by Contradiction*)
 Axiom pbc : forall (P: Prop), (~P -> False) -> P.
-
+Axiom dnegE : forall P:Prop, (~~P->P).
 
 
 
@@ -212,25 +212,56 @@ exists (Gamma:Ensemble Formula), (In (Ensemble Formula) T Gamma /\
 In Formula Gamma f).
 
 Definition UoCE1 (T: Ensemble (Ensemble Formula)) : Ensemble Formula :=
-    PropUoCE2 T.
-
-Lemma FuckUnion : forall (T:Ensemble (Ensemble Formula)) (S:Ensemble (Ensemble Formula)),
-chain (Ensemble Formula) Inc S T-> upper_bound (Ensemble Formula) S Inc T (PropUoCE2 T).
-intros T S H. unfold upper_bound. split.
-+intros Gamma H1. unfold Inc. unfold Included. intros f H2.
-unfold PropUoCE2.  Admitted. 
-  
+    PropUoCE2 T.  
 
 Lemma About_PropUoCE : forall (f:Formula) (T:Ensemble (Ensemble Formula)), 
 PropUoCE2 T f -> In Formula (PropUoCE2 T) f.
-Proof. intros f T H. unfold PropUoCE2 in H. Admitted.
+Proof. intros f T  H. apply H. Qed.
 
 
 
+
+
+(*Here!/*)
+
+Lemma About_PropUoCE1 : forall (T:Ensemble (Ensemble Formula)) (Gamma Gammap: Ensemble Formula),
+chain (Ensemble Formula) Inc (TheSet Gamma) T /\
+(forall f:Formula, In Formula Gammap f-> exists Gamma', (In (Ensemble Formula) T Gamma'/\ In Formula Gamma' f) )-> 
+exists Gammap':Ensemble Formula, Included Formula Gammap Gammap'.
+Proof. Admitted.
+
+
+Lemma About_PropUoCE2 : forall (S T:Ensemble (Ensemble Formula)),
+chain (Ensemble Formula) Inc S T ->  In (Ensemble Formula) T (PropUoCE2 T).
+Proof. intros Gamma T H. inversion H. Admitted. 
+
+Lemma About_TheSet : forall (Gamma Gammap: (Ensemble Formula)),
+Inc Gamma Gammap /\ Cons Gammap->In (Ensemble Formula) (TheSet Gamma) Gammap.
+Proof. Admitted. 
+
+Lemma PropUoCE_Inclusion : forall (T : Ensemble (Ensemble Formula)) (Gamma : Ensemble Formula),
+chain (Ensemble Formula) Inc (TheSet Gamma) T ->
+(forall f:Formula, In Formula Gamma f -> PropUoCE2 T f) -> Inc Gamma (PropUoCE2 T).
+Proof.
+    intros T Gamma H H1 f H2. apply About_PropUoCE. apply H1. apply H2.
+    Qed.
+
+
+(*In axiom mesle ine ke kolan chain ha ro towri taarif konim
+ke nonempty bashan. yaani intowr nist ke chize gheire badihi e ro 
+asl begirim, mesle lemme zorn, balke engar ke darim be taarife
+ye chizi ezafe mikonim*)
+Axiom Chains_Are_Nonempty : forall (T: Ensemble (Ensemble Formula)) (Gamma:Ensemble Formula),
+chain (Ensemble Formula) Inc (TheSet Gamma) T ->
+exists Gamma':Ensemble Formula, In (Ensemble Formula) T Gamma'.
 (*Before Here!
 You are strugling!...*)
 
-
+Lemma iConsEx : forall  (Gamma : Ensemble Formula),
+iCons (Gamma) -> exists f:Formula,
+In Formula Gamma f /\ In Formula Gamma (neg f).
+Proof.
+    intros Gamma H. unfold iCons in H. Admitted. 
 
 
 
@@ -249,9 +280,22 @@ Lemma Ex_of_Max1:forall (Gamma : Ensemble Formula),
     -intros X H2. unfold Inc. unfold Included. intros f.
         intros H3. apply About_PropUoCE. unfold PropUoCE2.
         exists X. split. --apply H2. --apply H3.
-    -Admitted.
-    (*+intros x H1. exists x. apply H1.*)
+    -apply About_TheSet. split.
+    --apply PropUoCE_Inclusion. ++ apply H1. 
+    ++intros f H2. unfold PropUoCE2.  
+    unfold PropUoCE2. case Chains_Are_Nonempty with (T:=T) (Gamma:=Gamma).
+    ---apply H1. --- intros Gamma' H3. exists Gamma'. split.
+    +++ apply H3. 
+    +++assert (H4:Inc Gamma Gamma').
+    ----apply H1. apply H3. ----apply H4. apply H2.
     
+    
+    --
+        
+    (*In vase esbate case ghablie montaha be bonbast khorde!*)
+    (*-apply H1. apply About_PropUoCE2 with (S := TheSet Gamma). apply H1.*) 
+    +intros x H1. exists x. apply H1.
+Qed.
 
 
 
