@@ -93,6 +93,13 @@ Definition iCons (Gamma : Ensemble Formula) : Prop :=
 
 
 
+Lemma iConsEqiv : forall(Gamma : Ensemble Formula),
+(exists f:Formula, In Formula Gamma f /\ In Formula Gamma (neg f))->iCons Gamma.
+Proof. intros Gamma H. unfold iCons. destruct H. rename x into f.
+apply negE with (f:=f). +apply ax. apply H.
++apply ax. apply H.
+Qed.  
+
 
 (*needed to prove the next lemma*)
 Lemma about_Union: forall (A:Ensemble Formula)(f1 f2: Formula),
@@ -215,8 +222,10 @@ Definition UoCE1 (T: Ensemble (Ensemble Formula)) : Ensemble Formula :=
     PropUoCE2 T.  
 
 Lemma About_PropUoCE : forall (f:Formula) (T:Ensemble (Ensemble Formula)), 
-PropUoCE2 T f -> In Formula (PropUoCE2 T) f.
-Proof. intros f T  H. apply H. Qed.
+PropUoCE2 T f <-> In Formula (PropUoCE2 T) f.
+Proof. intros f T. split. +intros H. apply H.
++intros H. unfold PropUoCE2. apply H. 
+Qed.
 
 
 
@@ -224,20 +233,15 @@ Proof. intros f T  H. apply H. Qed.
 
 (*Here!/*)
 
-Lemma About_PropUoCE1 : forall (T:Ensemble (Ensemble Formula)) (Gamma Gammap: Ensemble Formula),
-chain (Ensemble Formula) Inc (TheSet Gamma) T /\
-(forall f:Formula, In Formula Gammap f-> exists Gamma', (In (Ensemble Formula) T Gamma'/\ In Formula Gamma' f) )-> 
-exists Gammap':Ensemble Formula, Included Formula Gammap Gammap'.
-Proof. Admitted.
-
-
-Lemma About_PropUoCE2 : forall (S T:Ensemble (Ensemble Formula)),
-chain (Ensemble Formula) Inc S T ->  In (Ensemble Formula) T (PropUoCE2 T).
-Proof. intros Gamma T H. inversion H. Admitted. 
+Lemma About_TheSet0 : forall (Gamma Gammap: (Ensemble Formula)),
+TheSet Gamma Gammap->In (Ensemble Formula) (TheSet Gamma) Gammap.
+Proof. intros Gamma Gammap H. apply H.
+Qed.
 
 Lemma About_TheSet : forall (Gamma Gammap: (Ensemble Formula)),
 Inc Gamma Gammap /\ Cons Gammap->In (Ensemble Formula) (TheSet Gamma) Gammap.
-Proof. Admitted. 
+Proof. intros Gamma Gammap H. apply About_TheSet0. unfold TheSet. apply H.
+Qed. 
 
 Lemma PropUoCE_Inclusion : forall (T : Ensemble (Ensemble Formula)) (Gamma : Ensemble Formula),
 chain (Ensemble Formula) Inc (TheSet Gamma) T ->
@@ -246,6 +250,11 @@ Proof.
     intros T Gamma H H1 f H2. apply About_PropUoCE. apply H1. apply H2.
     Qed.
 
+Lemma About_chain_in_TheSet : forall (T: Ensemble ( Ensemble Formula )) (Gamma Gamma': Ensemble Formula),
+chain (Ensemble Formula) Inc (TheSet Gamma) T /\ In (Ensemble Formula) T Gamma' 
+-> Cons Gamma'.
+Proof. intros T Gamma Gamma' H. apply H. apply H.
+Qed.
 
 (*In axiom mesle ine ke kolan chain ha ro towri taarif konim
 ke nonempty bashan. yaani intowr nist ke chize gheire badihi e ro 
@@ -261,7 +270,7 @@ Lemma iConsEx : forall  (Gamma : Ensemble Formula),
 iCons (Gamma) -> exists f:Formula,
 In Formula Gamma f /\ In Formula Gamma (neg f).
 Proof.
-    intros Gamma H. unfold iCons in H. Admitted. 
+    intros Gamma H. unfold iCons in H. exists bot. Admitted. 
 
 
 
@@ -290,8 +299,24 @@ Lemma Ex_of_Max1:forall (Gamma : Ensemble Formula),
     ----apply H1. apply H3. ----apply H4. apply H2.
     
     
-    --
-        
+    --unfold Cons. apply pbc. intros H2. apply dnegE in H2. apply iConsEx in H2.
+    inversion H2. destruct H0. rename x into f. apply About_PropUoCE in H0.
+    apply About_PropUoCE in H3. unfold PropUoCE2 in H0. unfold PropUoCE2 in H3.
+    destruct H0. destruct H3. rename x into Gamma1. rename x0 into Gamma2.
+    assert (H5: Inc Gamma1 Gamma2 \/ Inc Gamma2 Gamma1).
+    apply H1. ++apply H0. ++apply H3. 
+    ++destruct H5.
+
+    +++assert(H5: In Formula Gamma2 f). apply H4. apply H0. 
+    assert (H6:exists f:Formula, In Formula Gamma2 f /\ In Formula Gamma2 (neg f)).
+    exists f. split. --- apply H5. --- apply H3. ---apply iConsEqiv in H6.
+    assert (H7:Cons Gamma2). apply About_chain_in_TheSet with (Gamma := Gamma) (T:=T). split.
+    apply H1. apply H3. contradiction.
+    +++assert(H5: In Formula Gamma1 (neg f)). apply H4. apply H3. 
+    assert (H6:exists f:Formula, In Formula Gamma1 f /\ In Formula Gamma1 (neg f)).
+    exists f. split. --- apply H0. --- apply H5. ---apply iConsEqiv in H6.
+    assert (H7:Cons Gamma1). apply About_chain_in_TheSet with (Gamma := Gamma) (T:=T). split.
+    apply H1. apply H0. contradiction.    
     (*In vase esbate case ghablie montaha be bonbast khorde!*)
     (*-apply H1. apply About_PropUoCE2 with (S := TheSet Gamma). apply H1.*) 
     +intros x H1. exists x. apply H1.
