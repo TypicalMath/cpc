@@ -1,5 +1,6 @@
 From Coq Require Import Sets.Ensembles.
 From Coq Require Import Powerset_facts.
+From Coq Require Import Finite_sets.
 (*Formulas: *)
 
 Inductive Formula : Type :=
@@ -132,7 +133,6 @@ Proof.
     +apply RAA. rewrite ->about_Union. apply IHND.
     Qed. 
 
-
 (*Lemma 1.4.5 (used in main proof!) *)
 Lemma ConsSyns0: forall (Gamma:Ensemble Formula) (f:Formula),
 iCons(Union Formula Gamma (Singleton Formula (neg f))) <-> ND Gamma f.
@@ -172,8 +172,11 @@ Definition pao (U:Type) (R: relation U ) : Prop :=
 
 (*Taghyir dadam!
 Ye ensemble dge 
-ezafe kardam.*)Definition chain (U:Type) (R: relation U) (S : Ensemble U) (T : Ensemble U)  : Prop :=
-    Included (U) T S /\(forall x y:U, In U T x -> In U T y -> (R x y \/ R y x)).
+ezafe kardam.
+Bazam taghyir!
+shart pao boodane R
+ezafe shod*)Definition chain (U:Type) (R: relation U) (S : Ensemble U) (T : Ensemble U)  : Prop :=
+  pao U R /\ Included (U) T S /\(forall x y:U, In U T x -> In U T y -> (R x y \/ R y x)).
 
 Definition maximal (U:Type) (S:Ensemble U) (x:U) (R:relation U) : Prop:=
     (forall y:U, In U S y -> R x y -> x=y) /\ In U S x.
@@ -268,9 +271,90 @@ You are strugling!...*)
 
 Lemma iConsEx : forall  (Gamma : Ensemble Formula),
 iCons (Gamma) -> exists f:Formula,
-In Formula Gamma f /\ In Formula Gamma (neg f).
+ND Gamma f /\ ND Gamma (neg f).
 Proof.
-    intros Gamma H. unfold iCons in H. exists bot. Admitted. 
+    intros Gamma H. unfold iCons in H. exists bot. split.
+    +apply H. +apply negI. apply Weakening. apply H.
+    Qed.
+
+
+
+
+
+(*Fixpoint finite_set_creator (proof : Prop) : Ensemble Formula:=
+    match proof with
+    | ax Gamma f' (In Formula Gamma f') => Singleton Formula f end.
+    *)
+Theorem Compactness : forall (Gamma : Ensemble Formula) (f:Formula),
+ND Gamma f -> (exists Gamma' : Ensemble Formula, 
+Finite Formula Gamma' /\ ND Gamma' f /\ Inc Gamma' Gamma).
+Proof. intros Gamma f H. (*Vase Esbatesh shayad oon mohmali ke
+oon bala neveshti be karet biad.*) Admitted.
+
+
+
+
+(*Pi'={f|(f in (union Es) ) st ( (E In T) /\ ) }*)
+
+
+
+(*Definition The_Pi'_Prop_formula (T:Ensemble (Ensemble Formula)) (Gamma Pi : Ensemble Formula) (f:Formula) : Prop :=
+    chain (Ensemble Formula) Inc (TheSet Gamma) T /\ Finite Formula Pi /\ Inc Pi (UoCE1 T) /\
+    In Formula Pi f /\ exists Gamma':Ensemble Formula, In (Ensemble Formula) T Gamma.
+
+Definition The_Pi'_Prop_ensemble (T:Ensemble (Ensemble Formula)) (Gamma Pi Pi' : Ensemble Formula) : Prop :=
+    chain (Ensemble Formula) Inc (TheSet Gamma) T /\ Finite Formula Pi /\ Inc Pi (UoCE1 T) /\
+    Inc Pi Pi' /\ In (Ensemble Formula) T Pi'.
+*)
+
+Definition min_chain_set (T:Ensemble (Ensemble Formula)) (Gamma min : Ensemble Formula) : Prop:=
+    chain (Ensemble Formula) Inc (TheSet Gamma) T /\ forall (Pi : Ensemble Formula), In (Ensemble Formula) T Pi -> Inc min Pi. 
+
+Definition min_chain_formula (T:Ensemble (Ensemble Formula)) (Gamma : Ensemble Formula) (f:Formula) : Prop:=
+    chain (Ensemble Formula) Inc (TheSet Gamma) T /\ forall (Pi : Ensemble Formula), In (Ensemble Formula) T Pi -> In Formula Pi f.
+
+Definition min_chain (T:Ensemble (Ensemble Formula)) (Gamma : Ensemble Formula) : Ensemble Formula :=
+    min_chain_formula T Gamma.
+
+Definition Includer_set (T:Ensemble (Ensemble Formula)) (Gamma : Ensemble Formula) (f : Formula) (Incl : Ensemble Formula) : Prop := 
+    chain (Ensemble Formula) Inc (TheSet Gamma) T /\ In (Ensemble Formula) T Incl /\ In Formula Incl f.
+
+
+
+
+Lemma UoCE1_has_subset : forall (T : Ensemble (Ensemble Formula)) (Gamma Pi: Ensemble Formula),
+chain (Ensemble Formula) Inc (TheSet Gamma) T /\ Inc Pi (UoCE1 T) /\ Finite Formula Pi 
+-> exists Pi', In (Ensemble Formula) T Pi' /\ Inc Pi Pi'.
+Proof. intros T Gamma Pi H. Admitted.  
+
+
+
+Lemma Strong_Weakening: forall (Pi : Ensemble Formula) (f : Formula), ND Pi f -> forall (Gamma : Ensemble Formula), Inc Pi Gamma -> ND Gamma f.
+Proof.
+    intros Pi f H. induction H; intros.
+    -apply ax. apply H0. apply H.
+    -apply conjE1 with (f2:=f2). apply IHND. apply H0.
+    -apply conjE2 with (f1:=f1). apply IHND. apply H0.
+    -apply conjI.
+        +apply IHND1. apply H1.
+        +apply IHND2. apply H1. 
+    -apply disjE with (f1:=f1) (f2:=f2).
+        +apply IHND1. apply incl_add. apply H2.
+        +apply IHND2. apply incl_add. apply H2.
+        +apply IHND3. apply H2.
+    -apply disjI1. apply IHND. apply H0.
+    -apply disjI2. apply IHND. apply H0.
+    -apply impE with (f1:=f1).
+        +apply IHND1. apply H1.
+        +apply IHND2. apply H1.
+    -apply impI. apply IHND. apply incl_add. apply H0.
+    -apply negE with (f:=f). 
+        +apply IHND1. apply H1.
+        +apply IHND2. apply H1.
+    -apply negI. apply IHND. apply incl_add. apply H0.
+    -apply botE. apply IHND. apply H0.
+    -apply RAA. apply IHND. apply incl_add. apply H0.
+    Qed.
 
 
 
@@ -299,47 +383,22 @@ Lemma Ex_of_Max1:forall (Gamma : Ensemble Formula),
     ----apply H1. apply H3. ----apply H4. apply H2.
     
     
-    --unfold Cons. apply pbc. intros H2. apply dnegE in H2. apply iConsEx in H2.
-    inversion H2. destruct H0. rename x into f. apply About_PropUoCE in H0.
-    apply About_PropUoCE in H3. unfold PropUoCE2 in H0. unfold PropUoCE2 in H3.
-    destruct H0. destruct H3. rename x into Gamma1. rename x0 into Gamma2.
-    assert (H5: Inc Gamma1 Gamma2 \/ Inc Gamma2 Gamma1).
-    apply H1. ++apply H0. ++apply H3. 
-    ++destruct H5.
+    --unfold Cons. apply pbc. intros H0. apply dnegE in H0.
+    apply Compactness in H0. destruct H0. rename x into Gamma'.
+    destruct H0. destruct H2. 
+    assert (H4: chain (Ensemble Formula) Inc (TheSet Gamma) T /\ Inc Gamma' (PropUoCE2 T) /\ Finite Formula Gamma'  ).
+    *split. apply H1. split. apply H3. apply H0.
+    *apply UoCE1_has_subset in H4. destruct H4. rename x into Gamma''.
+    destruct H4. assert (H6:Cons Gamma'').
+    **apply About_chain_in_TheSet with (T:=T) (Gamma := Gamma). split.
+    *** apply H1. ***apply H4.
+    **assert (H7: ND Gamma'' bot). 
+    ***apply Strong_Weakening with (Pi:=Gamma').  
+    ****apply H2. ****apply H5.
+    ***contradiction.
 
-    +++assert(H5: In Formula Gamma2 f). apply H4. apply H0. 
-    assert (H6:exists f:Formula, In Formula Gamma2 f /\ In Formula Gamma2 (neg f)).
-    exists f. split. --- apply H5. --- apply H3. ---apply iConsEqiv in H6.
-    assert (H7:Cons Gamma2). apply About_chain_in_TheSet with (Gamma := Gamma) (T:=T). split.
-    apply H1. apply H3. contradiction.
-    +++assert(H5: In Formula Gamma1 (neg f)). apply H4. apply H3. 
-    assert (H6:exists f:Formula, In Formula Gamma1 f /\ In Formula Gamma1 (neg f)).
-    exists f. split. --- apply H0. --- apply H5. ---apply iConsEqiv in H6.
-    assert (H7:Cons Gamma1). apply About_chain_in_TheSet with (Gamma := Gamma) (T:=T). split.
-    apply H1. apply H0. contradiction.    
-    (*In vase esbate case ghablie montaha be bonbast khorde!*)
-    (*-apply H1. apply About_PropUoCE2 with (S := TheSet Gamma). apply H1.*) 
     +intros x H1. exists x. apply H1.
-Qed.
-
-
-
-(*Lemma Ex_of_Max0: forall (Gamma : Ensemble Formula), 
-    Cons Gamma -> (exists (Gammap : Ensemble Formula),
-    (Cons Gammap) /\ (maximal (Ensemble Formula) Gammap Inc ) /\ Inc Gamma Gammap).
-Proof.
-    intros Gamma H. case Zorn's_Lemma with (U:=Ensemble Formula) (R:=Inc).
-    +unfold pao. split.
-        -unfold reflexive. intros x. unfold Inc. unfold Included. intros x0 H1. apply H1.
-        -split. 
-        --unfold transitive. intros x y z H1 H2.  unfold Inc in H1. unfold Inc in H2. unfold Inc.
-        unfold Included in H1. unfold Included in H2. unfold Included.
-        intros x0 H3. apply H1 in H3. apply H2 in H3. apply H3.
-        --unfold antisymmetric. intros x y H1 H2. apply Extensionality_Ensembles.
-        unfold Same_set. unfold Inc in H1. unfold Inc in H2. split. ---apply H1. --- apply H2.
-    +intros S H1. unfold chain in H1. unfold sup. unfold Inc. admit.
-    +intros x H1. exists x. rename x into Gammap. split. -unfold maximal in H1. admit. 
-        - split. -- apply H1. --unfold maximal in H1. admit.  *)
+    Qed.
 
 
 
@@ -349,31 +408,31 @@ Proof.
 
 
 
-(*Previous attemp for Lemma 1.4.10!:*)
-(*Definition maxCons (Gamma : Ensemble Formula) : Prop:=
-    Cons Gamma /\ forall (Gammap : Ensemble Formula), Included Formula Gamma Gammap
-        /\ Cons Gammap -> Included Formula Gammap Gamma.
 
-Definition TheSet (Gamma : Ensemble Formula) (X:Ensemble Formula) : Prop :=
-    Cons X /\ Included Formula Gamma X.
 
-Lemma Ex_of_Max : forall (Gamma:Ensemble Formula),
-    Cons Gamma -> exists (Gammap:Ensemble Formula), 
-    Included Formula Gamma Gammap /\ maxCons Gammap.
- Admitted.*)
+
+
 
 (*Function in Lemma 1.4.11:*)
 
-(*Axiom TheV : nat->bool.
-Axiom VProp : forall (n : nat), TheV n=true <-> In Formula Gamma (atom n)  
+Definition Gamma_Max (Gamma Gammap : Ensemble Formula) : Prop :=
+      
 
 
-Definition The (x : nat) : Prop := False.
-*)
+
+
+
+
+
+
+
 (*The Lemma:*)
+
+
+
 Lemma Existence_of_Model: forall (Gamma : Ensemble Formula),
 ~iCons Gamma -> exists (model : nat -> bool), mSsf model Gamma. 
-Proof. Admitted.
+Proof. intros Gamma H. 
 
 
 
