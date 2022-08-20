@@ -1,6 +1,8 @@
 From Coq Require Import Sets.Ensembles.
 From Coq Require Import Powerset_facts.
 From Coq Require Import Finite_sets.
+From Coq Require Import Powerset_Classical_facts.
+From Coq Require Import Finite_sets_facts.
 (*Formulas: *)
 
 Inductive Formula : Type :=
@@ -77,9 +79,16 @@ Definition sfSf (Gamma: Ensemble Formula) (f:Formula) : Prop:=
 
 (*Proof by Contradiction*)
 Axiom pbc : forall (P: Prop), (~P -> False) -> P.
-Axiom dnegE : forall P:Prop, (~~P->P).
+Axiom dnegE1 : forall P:Prop, (~~P->P).
+Axiom dnegE2 : forall P:Prop, (P->~~P).
+Axiom excluded_middle : forall P:Prop, P \/ ~P.
 
-
+Lemma Union_In : forall (U:Type) (A B : Ensemble U) (x:U),
+In U A x \/ In U B x -> In U (Union U A B) x.
+intros U A B x H. destruct H.
++apply Union_introl. apply H.
++apply Union_intror. apply H.
+Qed.
 
 
 
@@ -199,6 +208,19 @@ Axiom Zorn's_Lemma: forall (U:Type) (S:Ensemble U) (R:relation U),
 (*Lemma 1.4.10:*)
 Definition Inc : relation (Ensemble Formula) := Included Formula.
 
+Lemma Inc_is_pao : pao (Ensemble Formula) Inc.
+unfold pao. split.
++unfold Inc. unfold reflexive. intros Gamma. unfold Included.
+intros f H. apply H.
++split.
+++unfold transitive. intros x y z H1 H2. unfold Inc. unfold Included.
+intros f H3. unfold Inc in H1. unfold Inc in H2. unfold Included in H1.
+unfold Included in H2. apply H1 in H3. apply H2 in H3. apply H3.
+++unfold antisymmetric. intros x y H H1.
+unfold Inc in H. unfold Inc in H1.
+apply Extensionality_Ensembles. unfold Same_set. unfold Inc in H1. split. ---apply H. --- apply H1.
+Qed.
+
 Definition TheSet(Gamma:Ensemble Formula) (Gammap:Ensemble Formula): Prop:=
     Inc Gamma Gammap /\ Cons Gammap.
 Definition TheS(*name changed from S to TheS*) (Gamma : Ensemble Formula) : Ensemble (Ensemble Formula):= 
@@ -224,13 +246,15 @@ In Formula Gamma f).
 Definition UoCE1 (T: Ensemble (Ensemble Formula)) : Ensemble Formula :=
     PropUoCE2 T.  
 
-Lemma About_PropUoCE : forall (f:Formula) (T:Ensemble (Ensemble Formula)), 
-PropUoCE2 T f <-> In Formula (PropUoCE2 T) f.
-Proof. intros f T. split. +intros H. apply H.
-+intros H. unfold PropUoCE2. apply H. 
+Lemma About_PropUoCEr : forall (f:Formula) (T:Ensemble (Ensemble Formula)), 
+PropUoCE2 T f -> In Formula (PropUoCE2 T) f.
+Proof. intros f T H. apply H. 
 Qed.
 
-
+Lemma About_PropUoCEl : forall (f:Formula) (T:Ensemble (Ensemble Formula)), 
+In Formula (PropUoCE2 T) f -> PropUoCE2 T f.
+Proof. intros f T H. apply H.
+Qed.
 
 
 
@@ -247,10 +271,12 @@ Proof. intros Gamma Gammap H. apply About_TheSet0. unfold TheSet. apply H.
 Qed. 
 
 Lemma PropUoCE_Inclusion : forall (T : Ensemble (Ensemble Formula)) (Gamma : Ensemble Formula),
-chain (Ensemble Formula) Inc (TheSet Gamma) T ->
 (forall f:Formula, In Formula Gamma f -> PropUoCE2 T f) -> Inc Gamma (PropUoCE2 T).
 Proof.
-    intros T Gamma H H1 f H2. apply About_PropUoCE. apply H1. apply H2.
+    intros T Gamma H. unfold Inc. unfold Included. intros f H1. 
+    assert (H2:PropUoCE2 T f -> In Formula (PropUoCE2 T) f).
+    +apply About_PropUoCE.
+    +apply H2. apply H. apply H1.
     Qed.
 
 Lemma About_chain_in_TheSet : forall (T: Ensemble ( Ensemble Formula )) (Gamma Gamma': Ensemble Formula),
@@ -322,11 +348,181 @@ Definition Includer_set (T:Ensemble (Ensemble Formula)) (Gamma : Ensemble Formul
 
 
 
+
+
+
+
+
+
+
+
+    
+Lemma chain_finite_subset_has_maximum0 : forall (T D: Ensemble (Ensemble Formula)) (Gamma : Ensemble Formula),
+chain (Ensemble Formula) Inc (TheSet Gamma) T -> Included (Ensemble Formula) D T -> Finite (Ensemble Formula) D -> (exists (Gamma':(Ensemble Formula)), In (Ensemble Formula) D Gamma')
+->In (Ensemble Formula) D (UoCE1 D) /\ forall (Pi': Ensemble Formula), In (Ensemble Formula) D Pi' -> Inc Pi' (UoCE1 D).
+Proof.
+    intros T D Gamma H H0 H1 H2. split. destruct H2 as [Gamma' H2].
+    +induction H1.
+    ++destruct H2.
+    ++destruct H2. rename x0 into Gamma'. 
+
+    assert (HH:Included (Ensemble Formula) A T).
+    +++unfold Add in H0. unfold Included in H0.
+    unfold Included. intros X H5. apply H0. apply Union_introl. apply H5.
+
+
+    +++assert (H4: UoCE1 (Add (Ensemble Formula) A x) = Union Formula (UoCE1 A) x ).
+    ++++apply Extensionality_Ensembles. unfold Same_set.
+    split.
+    +++++unfold Add. unfold Included. intros f Hf. unfold UoCE1.
+    apply About_PropUoCEl in Hf. unfold PropUoCE2 in Hf.
+    destruct Hf. apply Union_In. destruct H4. apply Union_inv in H4.
+    destruct H4.
+    ++++++left. apply About_PropUoCEr. unfold PropUoCE2.
+    exists x0. split. -apply H4. -apply H5.
+    ++++++right. apply Singleton_inv in H4. rewrite <- H4 in H5. 
+    apply H5.
+    +++++unfold Add. unfold Included. intros f Hf.
+    apply Union_inv in Hf. unfold UoCE1. apply About_PropUoCEr.
+    unfold PropUoCE2.
+    destruct Hf.
+    ++++++exists (UoCE1 A). split. -apply Union_introl. apply IHFinite. 
+    +++++++apply HH. +++++++apply H2. -apply H4.
+    ++++++exists x. split. -apply Union_intror. apply In_singleton. -apply H4.
+    
+    ++++rewrite -> H4. unfold Add. unfold Add in H0. unfold chain in H.
+    
+    assert (H5:Inc (UoCE1 A) x \/ Inc x (UoCE1 A)).
+    +++++destruct H. destruct H5. apply H6.
+    -apply HH. apply IHFinite. -- apply HH. --apply H2.
+    -apply H0. apply Union_intror. apply In_singleton.
+    +++++destruct H5.
+    ++++++unfold Inc in H5. assert (H6:Union Formula x (UoCE1 A) = x).
+    +++++++apply Union_absorbs. apply H5.
+    +++++++rewrite -> Union_commutative in H6. rewrite -> H6. apply Union_intror.
+    apply In_singleton.
+    ++++++unfold Inc in H5.  assert (H6:Union Formula (UoCE1 A) x = (UoCE1 A)).
+    +++++++apply Union_absorbs. apply H5.
+    +++++++rewrite -> H6. apply Union_introl. apply IHFinite.
+    -apply HH. -apply H2.
+
+
+
+
+
+
+
+    +++apply Singleton_inv in H2.
+    
+    assert (HH:Included (Ensemble Formula) A T).
+    ++++unfold Add in H0. unfold Included in H0.
+    unfold Included. intros X H5. apply H0. apply Union_introl. apply H5.
+    
+    ++++assert (H4: A = (Empty_set (Ensemble Formula)) \/ ~(A = (Empty_set (Ensemble Formula)))).
+    apply excluded_middle.
+    +++++assert (H4': Same_set (Ensemble Formula) A (Empty_set (Ensemble Formula)) \/ ~(Same_set (Ensemble Formula) A (Empty_set (Ensemble Formula)))).
+    apply excluded_middle. 
+    
+    destruct H4.
+    ++++++rewrite -> H4. 
+
+    assert (H5:(Add (Ensemble Formula) (Empty_set (Ensemble Formula)) x) = Singleton (Ensemble Formula) x).
+    +++++++unfold Add. apply Extensionality_Ensembles. unfold Same_set.
+    unfold Included. 
+    split.
+    ++++++++intros X1 HX1. (*Here!!!*) apply HX1.
+
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+    assert (H5:In (Ensemble Formula)
+    (Union (Ensemble Formula) A (Singleton (Ensemble Formula) x)) (UoCE1 A)
+    -> In (Ensemble Formula) (Union (Ensemble Formula) A (Singleton (Ensemble Formula) x)) (Union Formula (UoCE1 A) x)).
+    +++++intros H5. assert (H6: In (Ensemble Formula) (Union (Ensemble Formula) A (Singleton (Ensemble Formula) x)) x).
+    ++++++apply Union_intror. apply In_singleton.
+    ++++++
+        
+
+
+
+
+
+
+    +intros Pi' H3. unfold UoCE1. apply PropUoCE_Inclusion.
+    intros f H4. unfold PropUoCE2. exists Pi'.
+    split. apply H3. apply H4.
+Qed. 
+
+
+
+
+
+
+Lemma chain_finite_subset_has_maximum : forall (T D: Ensemble (Ensemble Formula)) (Gamma : Ensemble Formula),
+chain (Ensemble Formula) Inc (TheSet Gamma) T -> Included (Ensemble Formula) D T -> Finite (Ensemble Formula) D -> (exists (Gamma':(Ensemble Formula)), In (Ensemble Formula) D Gamma')
+-> exists (Pi : Ensemble Formula), In (Ensemble Formula) D Pi /\ forall (Pi': Ensemble Formula), In (Ensemble Formula) D Pi' -> Inc Pi' Pi.
+Proof. intros T D Gamma H H0 H1 H2. destruct H2 as [Gamma' H2].
+
+
+induction H1. 
++exists Gamma'. split. -unfold In. apply H2. -intros Pi' H3. exfalso. destruct H3.
++(*Whaaaat?!!!split with (x:=Union Formula (UoCE1 A) x)*)
+split with (x:=UoCE1 (Add (Ensemble Formula)A x)  ). split.
+++
+destruct IHFinite as [Pi H4].
++++admit. +++admit. +++destruct H4. admit.
+
+
+
+
+
+
+
+induction H1. 
++exists Gamma'. split. -unfold In. apply H2. -intros Pi' H3. exfalso. destruct H3.
++(*Whaaaat?!!!split with (x:=Union Formula (UoCE1 A) x)*)
+split with (x:=UoCE1 (Add (Ensemble Formula)A x)  ). split.
+++
+destruct IHFinite as [Pi H4].
++++admit. +++admit. +++destruct H4. admit.
+
+intros Pi' H5. destruct IHFinite. 
+    ++assert (H4:Included (Ensemble Formula) (Add (Ensemble Formula) A x) T->Included (Ensemble Formula) (Add (Ensemble Formula) A x) (Add (Ensemble Formula) T x)).
+    +++intros H4. unfold Included in H4. unfold Included. intros x0 H6.
+    apply H4 in H5. unfold Add. apply Union_introl. apply H4. apply H6.
+    +++apply incl_add_x with (x:=x). -apply H2. -apply H4. apply H0.
+    ++unfold UoCE1. 
+    unfold Inc. unfold Included. intros f H6.
+    Admitted.  
+
+    (*
+    exists (UoCE1 D). split.
+    +inversion H1.
+    ++assert (UoCE1 (Empty_set (Ensemble Formula)) = (Empty_set Formula )).
+    +++unfold UoCE1. apply less_than_singleton.
+   *)
+
+
+
+
 Lemma UoCE1_has_subset : forall (T : Ensemble (Ensemble Formula)) (Gamma Pi: Ensemble Formula),
 chain (Ensemble Formula) Inc (TheSet Gamma) T /\ Inc Pi (UoCE1 T) /\ Finite Formula Pi 
 -> exists Pi', In (Ensemble Formula) T Pi' /\ Inc Pi Pi'.
-Proof. intros T Gamma Pi H. Admitted.  
-
+Proof. intros T Gamma Pi H. destruct H. destruct H0.    
+Admitted.
 
 
 Lemma Strong_Weakening: forall (Pi : Ensemble Formula) (f : Formula), ND Pi f -> forall (Gamma : Ensemble Formula), Inc Pi Gamma -> ND Gamma f.
