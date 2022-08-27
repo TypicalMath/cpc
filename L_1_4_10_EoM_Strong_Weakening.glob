@@ -1,0 +1,66 @@
+DIGEST 289d1c51c018b1c3b8129fdd827b08ed
+FL_1_4_10_EoM_Strong_Weakening
+R15:34 Logic_and_Set_Theory <> <> lib
+R52:66 EoM_Zorns_Lemma <> <> lib
+R84:101 L_1_4_10_EoM_Intro <> <> lib
+R128:141 Coq.Sets.Powerset_facts <> <> lib
+R168:178 Coq.Sets.Finite_sets <> <> lib
+R205:228 Coq.Sets.Powerset_Classical_facts <> <> lib
+R255:271 Coq.Sets.Finite_sets_facts <> <> lib
+R298:314 Coq.Sets.Constructive_sets <> <> lib
+prf 326:341 <> Strong_Weakening
+R357:364 Coq.Sets.Ensembles <> Ensemble def
+R366:372 Logic_and_Set_Theory <> Formula ind
+binder 352:353 <> Pi:1
+R380:386 Logic_and_Set_Theory <> Formula ind
+binder 376:376 <> f:2
+R397:400 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R390:391 Logic_and_Set_Theory <> ND ind
+R393:394 L_1_4_10_EoM_Strong_Weakening <> Pi:1 var
+R396:396 L_1_4_10_EoM_Strong_Weakening <> f:2 var
+R417:424 Coq.Sets.Ensembles <> Ensemble def
+R426:432 Logic_and_Set_Theory <> Formula ind
+binder 409:413 <> Gamma:3
+R448:451 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R436:438 L_1_4_10_EoM_Intro <> Inc def
+R440:441 L_1_4_10_EoM_Strong_Weakening <> Pi:1 var
+R443:447 L_1_4_10_EoM_Strong_Weakening <> Gamma:3 var
+R452:453 Logic_and_Set_Theory <> ND ind
+R455:459 L_1_4_10_EoM_Strong_Weakening <> Gamma:3 var
+R461:461 L_1_4_10_EoM_Strong_Weakening <> f:2 var
+R522:523 Logic_and_Set_Theory <> ax constr
+R522:523 Logic_and_Set_Theory <> ax constr
+R556:561 Logic_and_Set_Theory <> conjE1 constr
+R556:561 Logic_and_Set_Theory <> conjE1 constr
+R611:616 Logic_and_Set_Theory <> conjE2 constr
+R611:616 Logic_and_Set_Theory <> conjE2 constr
+R666:670 Logic_and_Set_Theory <> conjI constr
+R666:670 Logic_and_Set_Theory <> conjI constr
+R749:753 Logic_and_Set_Theory <> disjE constr
+R749:753 Logic_and_Set_Theory <> disjE constr
+R807:814 Coq.Sets.Powerset_facts <> incl_add thm
+R807:814 Coq.Sets.Powerset_facts <> incl_add thm
+R855:862 Coq.Sets.Powerset_facts <> incl_add thm
+R855:862 Coq.Sets.Powerset_facts <> incl_add thm
+R918:923 Logic_and_Set_Theory <> disjI1 constr
+R918:923 Logic_and_Set_Theory <> disjI1 constr
+R959:964 Logic_and_Set_Theory <> disjI2 constr
+R959:964 Logic_and_Set_Theory <> disjI2 constr
+R1000:1003 Logic_and_Set_Theory <> impE constr
+R1000:1003 Logic_and_Set_Theory <> impE constr
+R1095:1098 Logic_and_Set_Theory <> impI constr
+R1095:1098 Logic_and_Set_Theory <> impI constr
+R1119:1126 Coq.Sets.Powerset_facts <> incl_add thm
+R1119:1126 Coq.Sets.Powerset_facts <> incl_add thm
+R1150:1153 Logic_and_Set_Theory <> negE constr
+R1150:1153 Logic_and_Set_Theory <> negE constr
+R1244:1247 Logic_and_Set_Theory <> negI constr
+R1244:1247 Logic_and_Set_Theory <> negI constr
+R1268:1275 Coq.Sets.Powerset_facts <> incl_add thm
+R1268:1275 Coq.Sets.Powerset_facts <> incl_add thm
+R1299:1302 Logic_and_Set_Theory <> botE constr
+R1299:1302 Logic_and_Set_Theory <> botE constr
+R1338:1340 Logic_and_Set_Theory <> RAA constr
+R1338:1340 Logic_and_Set_Theory <> RAA constr
+R1361:1368 Coq.Sets.Powerset_facts <> incl_add thm
+R1361:1368 Coq.Sets.Powerset_facts <> incl_add thm

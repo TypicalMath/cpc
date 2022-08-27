@@ -1,0 +1,299 @@
+DIGEST 4da428d557eae807bfc42a0f7fd4ceaa
+FL_1_4_10_EoM_Intro
+R15:34 Logic_and_Set_Theory <> <> lib
+R52:66 EoM_Zorns_Lemma <> <> lib
+R93:101 Coq.Sets.Ensembles <> <> lib
+def 116:118 <> Inc
+R122:129 EoM_Zorns_Lemma <> relation def
+R132:139 Coq.Sets.Ensembles <> Ensemble def
+R141:147 Logic_and_Set_Theory <> Formula ind
+R153:160 Coq.Sets.Ensembles <> Included def
+R162:168 Logic_and_Set_Theory <> Formula ind
+prf 178:187 <> Inc_is_pao
+R191:193 EoM_Zorns_Lemma <> pao def
+R196:203 Coq.Sets.Ensembles <> Ensemble def
+R205:211 Logic_and_Set_Theory <> Formula ind
+R214:216 L_1_4_10_EoM_Intro <> Inc def
+R226:228 EoM_Zorns_Lemma <> pao def
+R246:248 L_1_4_10_EoM_Intro <> Inc def
+R258:266 EoM_Zorns_Lemma <> reflexive def
+R290:297 Coq.Sets.Ensembles <> Included def
+R338:347 EoM_Zorns_Lemma <> transitive def
+R377:379 L_1_4_10_EoM_Intro <> Inc def
+R389:396 Coq.Sets.Ensembles <> Included def
+R419:421 L_1_4_10_EoM_Intro <> Inc def
+R437:439 L_1_4_10_EoM_Intro <> Inc def
+R455:462 Coq.Sets.Ensembles <> Included def
+R478:485 Coq.Sets.Ensembles <> Included def
+R545:557 EoM_Zorns_Lemma <> antisymmetric def
+R584:586 L_1_4_10_EoM_Intro <> Inc def
+R601:603 L_1_4_10_EoM_Intro <> Inc def
+R618:641 Coq.Sets.Ensembles <> Extensionality_Ensembles prfax
+R618:641 Coq.Sets.Ensembles <> Extensionality_Ensembles prfax
+R651:658 Coq.Sets.Ensembles <> Same_set def
+R668:670 L_1_4_10_EoM_Intro <> Inc def
+def 763:768 <> TheSet
+R776:783 Coq.Sets.Ensembles <> Ensemble def
+R785:791 Logic_and_Set_Theory <> Formula ind
+binder 770:774 <> Gamma:1
+R802:809 Coq.Sets.Ensembles <> Ensemble def
+R811:817 Logic_and_Set_Theory <> Formula ind
+binder 795:800 <> Gammap:2
+R848:851 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R832:834 L_1_4_10_EoM_Intro <> Inc def
+R836:840 L_1_4_10_EoM_Intro <> Gamma:1 var
+R842:847 L_1_4_10_EoM_Intro <> Gammap:2 var
+R852:855 Logic_and_Set_Theory <> Cons def
+R857:862 L_1_4_10_EoM_Intro <> Gammap:2 var
+def 877:880 <> TheS
+R891:898 Coq.Sets.Ensembles <> Ensemble def
+R900:906 Logic_and_Set_Theory <> Formula ind
+binder 883:887 <> Gamma:3
+R911:918 Coq.Sets.Ensembles <> Ensemble def
+R921:928 Coq.Sets.Ensembles <> Ensemble def
+R930:936 Logic_and_Set_Theory <> Formula ind
+R946:951 L_1_4_10_EoM_Intro <> TheSet def
+R953:957 L_1_4_10_EoM_Intro <> Gamma:3 var
+def 972:979 <> PropUoCE
+R985:992 Coq.Sets.Ensembles <> Ensemble def
+R995:1002 Coq.Sets.Ensembles <> Ensemble def
+R1004:1010 Logic_and_Set_Theory <> Formula ind
+binder 982:982 <> T:4
+R1025:1032 Coq.Sets.Ensembles <> Ensemble def
+R1034:1040 Logic_and_Set_Theory <> Formula ind
+binder 1016:1021 <> Gammap:5
+R1067:1074 Coq.Sets.Ensembles <> Ensemble def
+R1076:1082 Logic_and_Set_Theory <> Formula ind
+binder 1061:1065 <> Gamma:6
+R1116:1119 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1087:1088 Coq.Sets.Ensembles <> In def
+R1109:1109 L_1_4_10_EoM_Intro <> T:4 var
+R1111:1115 L_1_4_10_EoM_Intro <> Gamma:6 var
+R1091:1098 Coq.Sets.Ensembles <> Ensemble def
+R1100:1106 Logic_and_Set_Theory <> Formula ind
+R1132:1138 Logic_and_Set_Theory <> Formula ind
+binder 1128:1128 <> f:7
+R1161:1163 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1143:1144 Coq.Sets.Ensembles <> In def
+R1154:1158 L_1_4_10_EoM_Intro <> Gamma:6 var
+R1160:1160 L_1_4_10_EoM_Intro <> f:7 var
+R1146:1152 Logic_and_Set_Theory <> Formula ind
+R1164:1165 Coq.Sets.Ensembles <> In def
+R1175:1180 L_1_4_10_EoM_Intro <> Gammap:5 var
+R1182:1182 L_1_4_10_EoM_Intro <> f:7 var
+R1167:1173 Logic_and_Set_Theory <> Formula ind
+def 1200:1208 <> PropUoCE2
+R1214:1221 Coq.Sets.Ensembles <> Ensemble def
+R1224:1231 Coq.Sets.Ensembles <> Ensemble def
+R1233:1239 Logic_and_Set_Theory <> Formula ind
+binder 1211:1211 <> T:8
+R1249:1255 Logic_and_Set_Theory <> Formula ind
+binder 1245:1245 <> f:9
+R1268:1275 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R1298:1301 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R1353:1353 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R1282:1289 Coq.Sets.Ensembles <> Ensemble def
+R1291:1297 Logic_and_Set_Theory <> Formula ind
+binder 1276:1280 <> Gamma:10
+R1331:1334 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R1302:1303 Coq.Sets.Ensembles <> In def
+R1324:1324 L_1_4_10_EoM_Intro <> T:8 var
+R1326:1330 L_1_4_10_EoM_Intro <> Gamma:10 var
+R1306:1313 Coq.Sets.Ensembles <> Ensemble def
+R1315:1321 Logic_and_Set_Theory <> Formula ind
+R1335:1336 Coq.Sets.Ensembles <> In def
+R1346:1350 L_1_4_10_EoM_Intro <> Gamma:10 var
+R1352:1352 L_1_4_10_EoM_Intro <> f:9 var
+R1338:1344 Logic_and_Set_Theory <> Formula ind
+def 1368:1372 <> UoCE1
+R1378:1385 Coq.Sets.Ensembles <> Ensemble def
+R1388:1395 Coq.Sets.Ensembles <> Ensemble def
+R1397:1403 Logic_and_Set_Theory <> Formula ind
+binder 1375:1375 <> T:11
+R1409:1416 Coq.Sets.Ensembles <> Ensemble def
+R1418:1424 Logic_and_Set_Theory <> Formula ind
+R1433:1441 L_1_4_10_EoM_Intro <> PropUoCE2 def
+R1443:1443 L_1_4_10_EoM_Intro <> T:11 var
+prf 1455:1469 <> About_PropUoCEr
+R1483:1489 Logic_and_Set_Theory <> Formula ind
+binder 1481:1481 <> f:12
+R1495:1502 Coq.Sets.Ensembles <> Ensemble def
+R1505:1512 Coq.Sets.Ensembles <> Ensemble def
+R1514:1520 Logic_and_Set_Theory <> Formula ind
+binder 1493:1493 <> T:13
+R1539:1542 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1526:1534 L_1_4_10_EoM_Intro <> PropUoCE2 def
+R1536:1536 L_1_4_10_EoM_Intro <> T:13 var
+R1538:1538 L_1_4_10_EoM_Intro <> f:12 var
+R1543:1544 Coq.Sets.Ensembles <> In def
+R1555:1563 L_1_4_10_EoM_Intro <> PropUoCE2 def
+R1565:1565 L_1_4_10_EoM_Intro <> T:13 var
+R1568:1568 L_1_4_10_EoM_Intro <> f:12 var
+R1546:1552 Logic_and_Set_Theory <> Formula ind
+prf 1614:1628 <> About_PropUoCEl
+R1642:1648 Logic_and_Set_Theory <> Formula ind
+binder 1640:1640 <> f:14
+R1654:1661 Coq.Sets.Ensembles <> Ensemble def
+R1664:1671 Coq.Sets.Ensembles <> Ensemble def
+R1673:1679 Logic_and_Set_Theory <> Formula ind
+binder 1652:1652 <> T:15
+R1711:1714 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1685:1686 Coq.Sets.Ensembles <> In def
+R1697:1705 L_1_4_10_EoM_Intro <> PropUoCE2 def
+R1707:1707 L_1_4_10_EoM_Intro <> T:15 var
+R1710:1710 L_1_4_10_EoM_Intro <> f:14 var
+R1688:1694 Logic_and_Set_Theory <> Formula ind
+R1715:1723 L_1_4_10_EoM_Intro <> PropUoCE2 def
+R1725:1725 L_1_4_10_EoM_Intro <> T:15 var
+R1727:1727 L_1_4_10_EoM_Intro <> f:14 var
+prf 1772:1784 <> About_TheSet0
+R1811:1818 Coq.Sets.Ensembles <> Ensemble def
+R1820:1826 Logic_and_Set_Theory <> Formula ind
+binder 1796:1800 <> Gamma:16
+binder 1802:1807 <> Gammap:17
+R1850:1851 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1831:1836 L_1_4_10_EoM_Intro <> TheSet def
+R1838:1842 L_1_4_10_EoM_Intro <> Gamma:16 var
+R1844:1849 L_1_4_10_EoM_Intro <> Gammap:17 var
+R1852:1853 Coq.Sets.Ensembles <> In def
+R1875:1880 L_1_4_10_EoM_Intro <> TheSet def
+R1882:1886 L_1_4_10_EoM_Intro <> Gamma:16 var
+R1889:1894 L_1_4_10_EoM_Intro <> Gammap:17 var
+R1856:1863 Coq.Sets.Ensembles <> Ensemble def
+R1865:1871 Logic_and_Set_Theory <> Formula ind
+prf 1948:1959 <> About_TheSet
+R1986:1993 Coq.Sets.Ensembles <> Ensemble def
+R1995:2001 Logic_and_Set_Theory <> Formula ind
+binder 1971:1975 <> Gamma:18
+binder 1977:1982 <> Gammap:19
+R2037:2038 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2022:2025 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R2006:2008 L_1_4_10_EoM_Intro <> Inc def
+R2010:2014 L_1_4_10_EoM_Intro <> Gamma:18 var
+R2016:2021 L_1_4_10_EoM_Intro <> Gammap:19 var
+R2026:2029 Logic_and_Set_Theory <> Cons def
+R2031:2036 L_1_4_10_EoM_Intro <> Gammap:19 var
+R2039:2040 Coq.Sets.Ensembles <> In def
+R2062:2067 L_1_4_10_EoM_Intro <> TheSet def
+R2069:2073 L_1_4_10_EoM_Intro <> Gamma:18 var
+R2076:2081 L_1_4_10_EoM_Intro <> Gammap:19 var
+R2043:2050 Coq.Sets.Ensembles <> Ensemble def
+R2052:2058 Logic_and_Set_Theory <> Formula ind
+R2120:2132 L_1_4_10_EoM_Intro <> About_TheSet0 thm
+R2120:2132 L_1_4_10_EoM_Intro <> About_TheSet0 thm
+R2142:2147 L_1_4_10_EoM_Intro <> TheSet def
+prf 2172:2189 <> PropUoCE_Inclusion
+R2205:2212 Coq.Sets.Ensembles <> Ensemble def
+R2215:2222 Coq.Sets.Ensembles <> Ensemble def
+R2224:2230 Logic_and_Set_Theory <> Formula ind
+binder 2201:2201 <> T:20
+R2243:2250 Coq.Sets.Ensembles <> Ensemble def
+R2252:2258 Logic_and_Set_Theory <> Formula ind
+binder 2235:2239 <> Gamma:21
+R2262:2262 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2316:2320 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2272:2278 Logic_and_Set_Theory <> Formula ind
+binder 2270:2270 <> f:22
+R2299:2302 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2281:2282 Coq.Sets.Ensembles <> In def
+R2292:2296 L_1_4_10_EoM_Intro <> Gamma:21 var
+R2298:2298 L_1_4_10_EoM_Intro <> f:22 var
+R2284:2290 Logic_and_Set_Theory <> Formula ind
+R2303:2311 L_1_4_10_EoM_Intro <> PropUoCE2 def
+R2313:2313 L_1_4_10_EoM_Intro <> T:20 var
+R2315:2315 L_1_4_10_EoM_Intro <> f:22 var
+R2321:2323 L_1_4_10_EoM_Intro <> Inc def
+R2325:2329 L_1_4_10_EoM_Intro <> Gamma:21 var
+R2332:2340 L_1_4_10_EoM_Intro <> PropUoCE2 def
+R2342:2342 L_1_4_10_EoM_Intro <> T:20 var
+R2382:2384 L_1_4_10_EoM_Intro <> Inc def
+R2394:2401 Coq.Sets.Ensembles <> Included def
+R2446:2449 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2433:2441 L_1_4_10_EoM_Intro <> PropUoCE2 def
+R2450:2451 Coq.Sets.Ensembles <> In def
+R2462:2470 L_1_4_10_EoM_Intro <> PropUoCE2 def
+R2453:2459 Logic_and_Set_Theory <> Formula ind
+R2446:2449 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2433:2441 L_1_4_10_EoM_Intro <> PropUoCE2 def
+R2450:2451 Coq.Sets.Ensembles <> In def
+R2462:2470 L_1_4_10_EoM_Intro <> PropUoCE2 def
+R2453:2459 Logic_and_Set_Theory <> Formula ind
+R2490:2504 L_1_4_10_EoM_Intro <> About_PropUoCEl thm
+R2490:2504 L_1_4_10_EoM_Intro <> About_PropUoCEl thm
+prf 2557:2577 <> About_chain_in_TheSet
+R2592:2599 Coq.Sets.Ensembles <> Ensemble def
+R2603:2610 Coq.Sets.Ensembles <> Ensemble def
+R2612:2618 Logic_and_Set_Theory <> Formula ind
+binder 2589:2589 <> T:23
+R2638:2645 Coq.Sets.Ensembles <> Ensemble def
+R2647:2653 Logic_and_Set_Theory <> Formula ind
+binder 2624:2628 <> Gamma:24
+binder 2630:2635 <> Gamma':25
+R2736:2740 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2702:2705 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R2657:2661 EoM_Zorns_Lemma <> chain def
+R2664:2671 Coq.Sets.Ensembles <> Ensemble def
+R2673:2679 Logic_and_Set_Theory <> Formula ind
+R2682:2684 L_1_4_10_EoM_Intro <> Inc def
+R2687:2692 L_1_4_10_EoM_Intro <> TheSet def
+R2694:2698 L_1_4_10_EoM_Intro <> Gamma:24 var
+R2701:2701 L_1_4_10_EoM_Intro <> T:23 var
+R2706:2707 Coq.Sets.Ensembles <> In def
+R2728:2728 L_1_4_10_EoM_Intro <> T:23 var
+R2730:2735 L_1_4_10_EoM_Intro <> Gamma':25 var
+R2710:2717 Coq.Sets.Ensembles <> Ensemble def
+R2719:2725 Logic_and_Set_Theory <> Formula ind
+R2741:2744 Logic_and_Set_Theory <> Cons def
+R2746:2751 L_1_4_10_EoM_Intro <> Gamma':25 var
+ax 2816:2834 <> Chains_Are_Nonempty
+R2849:2856 Coq.Sets.Ensembles <> Ensemble def
+R2859:2866 Coq.Sets.Ensembles <> Ensemble def
+R2868:2874 Logic_and_Set_Theory <> Formula ind
+binder 2846:2846 <> T:26
+R2885:2892 Coq.Sets.Ensembles <> Ensemble def
+R2894:2900 Logic_and_Set_Theory <> Formula ind
+binder 2879:2883 <> Gamma:27
+R2949:2952 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2904:2908 EoM_Zorns_Lemma <> chain def
+R2911:2918 Coq.Sets.Ensembles <> Ensemble def
+R2920:2926 Logic_and_Set_Theory <> Formula ind
+R2929:2931 L_1_4_10_EoM_Intro <> Inc def
+R2934:2939 L_1_4_10_EoM_Intro <> TheSet def
+R2941:2945 L_1_4_10_EoM_Intro <> Gamma:27 var
+R2948:2948 L_1_4_10_EoM_Intro <> T:26 var
+R2953:2959 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R2983:2984 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R2967:2974 Coq.Sets.Ensembles <> Ensemble def
+R2976:2982 Logic_and_Set_Theory <> Formula ind
+binder 2960:2965 <> Gamma':28
+R2985:2986 Coq.Sets.Ensembles <> In def
+R3007:3007 L_1_4_10_EoM_Intro <> T:26 var
+R3009:3014 L_1_4_10_EoM_Intro <> Gamma':28 var
+R2989:2996 Coq.Sets.Ensembles <> Ensemble def
+R2998:3004 Logic_and_Set_Theory <> Formula ind
+prf 3024:3030 <> iConsEx
+R3051:3058 Coq.Sets.Ensembles <> Ensemble def
+R3060:3066 Logic_and_Set_Theory <> Formula ind
+binder 3043:3047 <> Gamma:30
+R3083:3086 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3070:3074 Logic_and_Set_Theory <> iCons def
+R3077:3081 L_1_4_10_EoM_Intro <> Gamma:30 var
+R3087:3093 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R3103:3104 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R3096:3102 Logic_and_Set_Theory <> Formula ind
+binder 3094:3094 <> f:31
+R3115:3118 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R3105:3106 Logic_and_Set_Theory <> ND ind
+R3108:3112 L_1_4_10_EoM_Intro <> Gamma:30 var
+R3114:3114 L_1_4_10_EoM_Intro <> f:31 var
+R3119:3120 Logic_and_Set_Theory <> ND ind
+R3122:3126 L_1_4_10_EoM_Intro <> Gamma:30 var
+R3129:3131 Logic_and_Set_Theory <> neg constr
+R3133:3133 L_1_4_10_EoM_Intro <> f:31 var
+R3171:3175 Logic_and_Set_Theory <> iCons def
+R3190:3192 Logic_and_Set_Theory <> bot constr
+R3190:3192 Logic_and_Set_Theory <> bot constr
+R3223:3226 Logic_and_Set_Theory <> negI constr
+R3223:3226 Logic_and_Set_Theory <> negI constr
+R3235:3243 Logic_and_Set_Theory <> Weakening thm
+R3235:3243 Logic_and_Set_Theory <> Weakening thm

@@ -1,0 +1,37 @@
+DIGEST e1c65ef54a02ea70385acc1d31d57b01
+FL_1_4_10_EoM_Compactness
+R15:34 Logic_and_Set_Theory <> <> lib
+R52:66 EoM_Zorns_Lemma <> <> lib
+R84:101 L_1_4_10_EoM_Intro <> <> lib
+R128:141 Coq.Sets.Powerset_facts <> <> lib
+R168:178 Coq.Sets.Finite_sets <> <> lib
+R205:228 Coq.Sets.Powerset_Classical_facts <> <> lib
+R255:271 Coq.Sets.Finite_sets_facts <> <> lib
+R298:314 Coq.Sets.Constructive_sets <> <> lib
+prf 329:339 <> Compactness
+R359:366 Coq.Sets.Ensembles <> Ensemble def
+R368:374 Logic_and_Set_Theory <> Formula ind
+binder 351:355 <> Gamma:1
+R380:386 Logic_and_Set_Theory <> Formula ind
+binder 378:378 <> f:2
+R400:404 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R496:496 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R390:391 Logic_and_Set_Theory <> ND ind
+R393:397 L_1_4_10_EoM_Compactness <> Gamma:1 var
+R399:399 L_1_4_10_EoM_Compactness <> f:2 var
+R405:411 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R437:439 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R421:428 Coq.Sets.Ensembles <> Ensemble def
+R430:436 Logic_and_Set_Theory <> Formula ind
+binder 412:417 <> Gamma':3
+R461:464 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R440:445 Coq.Sets.Finite_sets <> Finite ind
+R455:460 L_1_4_10_EoM_Compactness <> Gamma':3 var
+R447:453 Logic_and_Set_Theory <> Formula ind
+R476:479 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R465:466 Logic_and_Set_Theory <> ND ind
+R468:473 L_1_4_10_EoM_Compactness <> Gamma':3 var
+R475:475 L_1_4_10_EoM_Compactness <> f:2 var
+R480:482 L_1_4_10_EoM_Intro <> Inc def
+R484:489 L_1_4_10_EoM_Compactness <> Gamma':3 var
+R491:495 L_1_4_10_EoM_Compactness <> Gamma:1 var

@@ -1,0 +1,31 @@
+DIGEST caf0edb2f044ec601666f0d7322e7f03
+FL_1_4_11_EoM_Existence_of_Model
+R15:34 Logic_and_Set_Theory <> <> lib
+R52:66 EoM_Zorns_Lemma <> <> lib
+R84:101 L_1_4_10_EoM_Intro <> <> lib
+R128:141 Coq.Sets.Powerset_facts <> <> lib
+R168:178 Coq.Sets.Finite_sets <> <> lib
+R205:228 Coq.Sets.Powerset_Classical_facts <> <> lib
+R255:271 Coq.Sets.Finite_sets_facts <> <> lib
+R298:314 Coq.Sets.Constructive_sets <> <> lib
+def 361:369 <> Gamma_Max
+R387:394 Coq.Sets.Ensembles <> Ensemble def
+R396:402 Logic_and_Set_Theory <> Formula ind
+binder 372:376 <> Gamma:1
+binder 378:383 <> Gammap:2
+R491:498 Coq.Sets.Ensembles <> Ensemble def
+R500:506 Logic_and_Set_Theory <> Formula ind
+binder 483:487 <> Gamma:3
+R522:525 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R510:510 Coq.Init.Logic <> ::type_scope:'~'_x not
+R511:515 Logic_and_Set_Theory <> iCons def
+R517:521 L_1_4_11_EoM_Existence_of_Model <> Gamma:3 var
+R526:533 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R553:555 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R545:548 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R542:544 Coq.Init.Datatypes <> nat ind
+R549:552 Coq.Init.Datatypes <> bool ind
+binder 534:538 <> model:4
+R556:559 Logic_and_Set_Theory <> mSsf def
+R561:565 L_1_4_11_EoM_Existence_of_Model <> model:4 var
+R567:571 L_1_4_11_EoM_Existence_of_Model <> Gamma:3 var

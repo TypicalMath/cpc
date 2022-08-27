@@ -1,0 +1,234 @@
+DIGEST 5a9e13c0a844fba646d7ff27201396cc
+FEoM_Zorns_Lemma
+R15:34 Logic_and_Set_Theory <> <> lib
+R61:74 Coq.Sets.Ensembles <> <> lib
+R101:119 Coq.Sets.Powerset_facts <> <> lib
+def 153:160 <> relation
+binder 163:163 <> U:1
+R175:178 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R174:174 EoM_Zorns_Lemma <> U:1 var
+R180:183 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R179:179 EoM_Zorns_Lemma <> U:1 var
+def 201:209 <> reflexive
+binder 212:212 <> U:2
+R225:232 EoM_Zorns_Lemma <> relation def
+R234:234 EoM_Zorns_Lemma <> U:2 var
+binder 221:221 <> R:3
+R260:260 EoM_Zorns_Lemma <> U:2 var
+binder 258:258 <> x:4
+R263:263 EoM_Zorns_Lemma <> R:3 var
+R265:265 EoM_Zorns_Lemma <> x:4 var
+R267:267 EoM_Zorns_Lemma <> x:4 var
+def 281:290 <> transitive
+binder 293:293 <> U:5
+R306:313 EoM_Zorns_Lemma <> relation def
+R315:315 EoM_Zorns_Lemma <> U:5 var
+binder 302:302 <> R:6
+R345:345 EoM_Zorns_Lemma <> U:5 var
+binder 339:339 <> x:7
+binder 341:341 <> y:8
+binder 343:343 <> z:9
+R353:354 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R348:348 EoM_Zorns_Lemma <> R:6 var
+R350:350 EoM_Zorns_Lemma <> x:7 var
+R352:352 EoM_Zorns_Lemma <> y:8 var
+R360:363 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R355:355 EoM_Zorns_Lemma <> R:6 var
+R357:357 EoM_Zorns_Lemma <> y:8 var
+R359:359 EoM_Zorns_Lemma <> z:9 var
+R364:364 EoM_Zorns_Lemma <> R:6 var
+R366:366 EoM_Zorns_Lemma <> x:7 var
+R368:368 EoM_Zorns_Lemma <> z:9 var
+def 382:390 <> symmetric
+binder 393:393 <> U:10
+R406:413 EoM_Zorns_Lemma <> relation def
+R415:415 EoM_Zorns_Lemma <> U:10 var
+binder 402:402 <> R:11
+R443:443 EoM_Zorns_Lemma <> U:10 var
+binder 439:439 <> x:12
+binder 441:441 <> y:13
+R451:453 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R446:446 EoM_Zorns_Lemma <> R:11 var
+R448:448 EoM_Zorns_Lemma <> x:12 var
+R450:450 EoM_Zorns_Lemma <> y:13 var
+R454:454 EoM_Zorns_Lemma <> R:11 var
+R456:456 EoM_Zorns_Lemma <> y:13 var
+R458:458 EoM_Zorns_Lemma <> x:12 var
+def 472:484 <> antisymmetric
+binder 487:487 <> U:14
+R500:507 EoM_Zorns_Lemma <> relation def
+R509:509 EoM_Zorns_Lemma <> U:14 var
+binder 496:496 <> R:15
+R537:537 EoM_Zorns_Lemma <> U:14 var
+binder 533:533 <> x:16
+binder 535:535 <> y:17
+R545:547 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R540:540 EoM_Zorns_Lemma <> R:15 var
+R542:542 EoM_Zorns_Lemma <> x:16 var
+R544:544 EoM_Zorns_Lemma <> y:17 var
+R553:555 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R548:548 EoM_Zorns_Lemma <> R:15 var
+R550:550 EoM_Zorns_Lemma <> y:17 var
+R552:552 EoM_Zorns_Lemma <> x:16 var
+R557:557 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R556:556 EoM_Zorns_Lemma <> x:16 var
+R558:558 EoM_Zorns_Lemma <> y:17 var
+def 572:574 <> pao
+binder 577:577 <> U:18
+R589:596 EoM_Zorns_Lemma <> relation def
+R598:598 EoM_Zorns_Lemma <> U:18 var
+binder 586:586 <> R:19
+R629:632 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R616:624 EoM_Zorns_Lemma <> reflexive def
+R626:626 EoM_Zorns_Lemma <> U:18 var
+R628:628 EoM_Zorns_Lemma <> R:19 var
+R647:650 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R633:642 EoM_Zorns_Lemma <> transitive def
+R644:644 EoM_Zorns_Lemma <> U:18 var
+R646:646 EoM_Zorns_Lemma <> R:19 var
+R651:663 EoM_Zorns_Lemma <> antisymmetric def
+R665:665 EoM_Zorns_Lemma <> U:18 var
+R667:667 EoM_Zorns_Lemma <> R:19 var
+def 682:686 <> chain
+binder 689:689 <> U:20
+R701:708 EoM_Zorns_Lemma <> relation def
+R710:710 EoM_Zorns_Lemma <> U:20 var
+binder 698:698 <> R:21
+R718:725 Coq.Sets.Ensembles <> Ensemble def
+R727:727 EoM_Zorns_Lemma <> U:20 var
+binder 714:714 <> S:22
+R735:742 Coq.Sets.Ensembles <> Ensemble def
+R744:744 EoM_Zorns_Lemma <> U:20 var
+binder 731:731 <> T:23
+R767:770 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R760:762 EoM_Zorns_Lemma <> pao def
+R764:764 EoM_Zorns_Lemma <> U:20 var
+R766:766 EoM_Zorns_Lemma <> R:21 var
+R787:790 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R845:845 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R771:778 Coq.Sets.Ensembles <> Included def
+R784:784 EoM_Zorns_Lemma <> T:23 var
+R786:786 EoM_Zorns_Lemma <> S:22 var
+R781:781 EoM_Zorns_Lemma <> U:20 var
+R802:802 EoM_Zorns_Lemma <> U:20 var
+binder 798:798 <> x:24
+binder 800:800 <> y:25
+R813:816 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R805:806 Coq.Sets.Ensembles <> In def
+R810:810 EoM_Zorns_Lemma <> T:23 var
+R812:812 EoM_Zorns_Lemma <> x:24 var
+R808:808 EoM_Zorns_Lemma <> U:20 var
+R825:829 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R844:844 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R817:818 Coq.Sets.Ensembles <> In def
+R822:822 EoM_Zorns_Lemma <> T:23 var
+R824:824 EoM_Zorns_Lemma <> y:25 var
+R820:820 EoM_Zorns_Lemma <> U:20 var
+R835:838 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R830:830 EoM_Zorns_Lemma <> R:21 var
+R832:832 EoM_Zorns_Lemma <> x:24 var
+R834:834 EoM_Zorns_Lemma <> y:25 var
+R839:839 EoM_Zorns_Lemma <> R:21 var
+R841:841 EoM_Zorns_Lemma <> y:25 var
+R843:843 EoM_Zorns_Lemma <> x:24 var
+def 860:866 <> maximal
+binder 869:869 <> U:26
+R880:887 Coq.Sets.Ensembles <> Ensemble def
+R889:889 EoM_Zorns_Lemma <> U:26 var
+binder 878:878 <> S:27
+R895:895 EoM_Zorns_Lemma <> U:26 var
+binder 893:893 <> x:28
+R901:908 EoM_Zorns_Lemma <> relation def
+R910:910 EoM_Zorns_Lemma <> U:26 var
+binder 899:899 <> R:29
+R926:926 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R963:967 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R936:936 EoM_Zorns_Lemma <> U:26 var
+binder 934:934 <> y:30
+R947:950 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R939:940 Coq.Sets.Ensembles <> In def
+R944:944 EoM_Zorns_Lemma <> S:27 var
+R946:946 EoM_Zorns_Lemma <> y:30 var
+R942:942 EoM_Zorns_Lemma <> U:26 var
+R956:959 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R951:951 EoM_Zorns_Lemma <> R:29 var
+R953:953 EoM_Zorns_Lemma <> x:28 var
+R955:955 EoM_Zorns_Lemma <> y:30 var
+R961:961 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R960:960 EoM_Zorns_Lemma <> x:28 var
+R962:962 EoM_Zorns_Lemma <> y:30 var
+R968:969 Coq.Sets.Ensembles <> In def
+R973:973 EoM_Zorns_Lemma <> S:27 var
+R975:975 EoM_Zorns_Lemma <> x:28 var
+R971:971 EoM_Zorns_Lemma <> U:26 var
+def 990:1000 <> upper_bound
+binder 1003:1003 <> U:31
+R1014:1021 Coq.Sets.Ensembles <> Ensemble def
+R1023:1023 EoM_Zorns_Lemma <> U:31 var
+binder 1012:1012 <> S:32
+R1030:1037 EoM_Zorns_Lemma <> relation def
+R1039:1039 EoM_Zorns_Lemma <> U:31 var
+binder 1027:1027 <> R:33
+R1045:1052 Coq.Sets.Ensembles <> Ensemble def
+R1054:1054 EoM_Zorns_Lemma <> U:31 var
+binder 1043:1043 <> T:34
+R1061:1061 EoM_Zorns_Lemma <> U:31 var
+binder 1058:1059 <> ub:35
+R1076:1076 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R1107:1111 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R1086:1086 EoM_Zorns_Lemma <> U:31 var
+binder 1084:1084 <> x:36
+R1097:1100 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1089:1090 Coq.Sets.Ensembles <> In def
+R1094:1094 EoM_Zorns_Lemma <> T:34 var
+R1096:1096 EoM_Zorns_Lemma <> x:36 var
+R1092:1092 EoM_Zorns_Lemma <> U:31 var
+R1101:1101 EoM_Zorns_Lemma <> R:33 var
+R1103:1103 EoM_Zorns_Lemma <> x:36 var
+R1105:1106 EoM_Zorns_Lemma <> ub:35 var
+R1112:1113 Coq.Sets.Ensembles <> In def
+R1117:1117 EoM_Zorns_Lemma <> S:32 var
+R1119:1120 EoM_Zorns_Lemma <> ub:35 var
+R1115:1115 EoM_Zorns_Lemma <> U:31 var
+ax 1130:1141 <> Zorn's_Lemma
+binder 1152:1152 <> U:37
+R1163:1170 Coq.Sets.Ensembles <> Ensemble def
+R1172:1172 EoM_Zorns_Lemma <> U:37 var
+binder 1161:1161 <> S:38
+R1178:1185 EoM_Zorns_Lemma <> relation def
+R1187:1187 EoM_Zorns_Lemma <> U:37 var
+binder 1176:1176 <> R:39
+R1203:1206 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1196:1198 EoM_Zorns_Lemma <> pao def
+R1200:1200 EoM_Zorns_Lemma <> U:37 var
+R1202:1202 EoM_Zorns_Lemma <> R:39 var
+R1207:1207 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1286:1295 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1219:1226 Coq.Sets.Ensembles <> Ensemble def
+R1228:1228 EoM_Zorns_Lemma <> U:37 var
+binder 1216:1216 <> T:40
+R1246:1249 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1233:1237 EoM_Zorns_Lemma <> chain def
+R1239:1239 EoM_Zorns_Lemma <> U:37 var
+R1241:1241 EoM_Zorns_Lemma <> R:39 var
+R1243:1243 EoM_Zorns_Lemma <> S:38 var
+R1245:1245 EoM_Zorns_Lemma <> T:40 var
+R1250:1257 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R1261:1263 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R1260:1260 EoM_Zorns_Lemma <> U:37 var
+binder 1258:1258 <> s:41
+R1264:1274 EoM_Zorns_Lemma <> upper_bound def
+R1276:1276 EoM_Zorns_Lemma <> U:37 var
+R1278:1278 EoM_Zorns_Lemma <> S:38 var
+R1280:1280 EoM_Zorns_Lemma <> R:39 var
+R1282:1282 EoM_Zorns_Lemma <> T:40 var
+R1284:1284 EoM_Zorns_Lemma <> s:41 var
+R1296:1303 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R1311:1313 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R1310:1310 EoM_Zorns_Lemma <> U:37 var
+binder 1304:1308 <> maxim:42
+R1314:1320 EoM_Zorns_Lemma <> maximal def
+R1322:1322 EoM_Zorns_Lemma <> U:37 var
+R1324:1324 EoM_Zorns_Lemma <> S:38 var
+R1326:1330 EoM_Zorns_Lemma <> maxim:42 var
+R1332:1332 EoM_Zorns_Lemma <> R:39 var
