@@ -224,36 +224,33 @@ Proof.
     Admitted.
   
 
+Axiom for_a_certain_formula_there_is_a_subset_in_chain:
+forall (T : Ensemble (Ensemble Formula)) (Gamma : Ensemble Formula) (f : Formula),
+chain (Ensemble Formula) Inc (TheSet Gamma) T -> (In Formula (UoCE1 T) f) -> exists (A : Ensemble Formula),
+In (Ensemble Formula) T A /\ In Formula A f /\ (forall (B : Ensemble Formula), In (Ensemble Formula) T B -> In Formula B f -> Inc A B).
 
 
 
 
-
-Lemma second_sentence : forall (T : Ensemble (Ensemble Formula)) (Pi : Ensemble Formula),
-Finite Formula Pi -> Inc Pi (UoCE1 T) -> Finite (Ensemble Formula) (IoPE Pi T).
-intros T Pi H H1.
-
+Lemma second_sentence : forall (T : Ensemble (Ensemble Formula)) (Pi Gamma : Ensemble Formula),
+Finite Formula Pi -> Inc Pi (UoCE1 T) -> chain (Ensemble Formula) Inc (TheSet Gamma) T -> Finite (Ensemble Formula) (IoPE Pi T).
+intros T Pi Gamma H H1 Hc.
 induction H. 
 +rewrite IoPE_Empty_set. apply Empty_is_finite.
-
 +rewrite -> Add_IoPE. rename A into Pi'.
 ++apply Union_preserves_Finite.
 +++apply IHFinite. unfold Add in H1.
 unfold Inc in H1. unfold Inc. unfold Included. unfold Included in H1.
 intros f Hf. apply H1. apply Union_introl. apply Hf.
 +++assert (H2: exists (A:Ensemble Formula), In (Ensemble Formula) T A /\ In Formula A x /\ forall (B: Ensemble Formula), In (Ensemble Formula) T B -> In Formula B x -> Inc A B).
-++++ 
-
-
-
-
-
-
-
-
-
-
-
+++++apply for_a_certain_formula_there_is_a_subset_in_chain with (Gamma:=Gamma).
++++++apply Hc. +++++unfold UoCE1. apply About_PropUoCEr. unfold PropUoCE2.
+unfold Inc in H1. unfold Included in H1.
+assert (Hx: In Formula (UoCE1 T) x).
+-apply H1. apply Union_intror. apply In_singleton.
+-unfold UoCE1 in Hx. apply About_PropUoCEl in Hx.
+unfold PropUoCE2 in Hx. destruct Hx. exists x0.
+apply H2.
 ++++destruct H2. rename x0 into A. rewrite -> IoPE_Singleton_set with (A:=A).
 +++++apply Singleton_is_finite.
 +++++split. apply H2. split. -destruct H2. destruct H3. apply H3.
