@@ -1,0 +1,6 @@
+#Compile files#
+*.vo
+*.vos
+*.glob
+*.vok
+*.aux
