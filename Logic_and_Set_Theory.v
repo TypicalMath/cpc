@@ -11,7 +11,12 @@ Inductive Formula : Type :=
     | neg : Formula -> Formula
     | bot : Formula. 
 
-
+Notation "~T" := (bot) (at level 0, left associativity).
+Notation "#' f" := (atom f) (at level 1, left associativity).  
+Notation "~' f" := (neg f) (at level 38, left associativity).
+Notation "f1 /\' f2 " := (conj f1 f2) (at level 39, left associativity).
+Notation "f1 \/' f2 " := (disj f1 f2) (at level 40, left associativity).
+Notation "f1 ->' f2 " := (imp f1 f2) (at level 41, right associativity).
 
 
 (*Natural Deduction: *)
@@ -32,6 +37,7 @@ Inductive ND : Ensemble Formula -> Formula -> Prop :=
     | botE (C:Ensemble Formula) (f:Formula) (H:ND C bot):ND C f
     | RAA (C:Ensemble Formula) (f:Formula) (H:ND (Union Formula C (Singleton Formula (neg f))) bot):ND C f.
 
+Notation "C |- f " := (ND C f) (at level 20, left associativity).
 
 
 
@@ -47,18 +53,21 @@ Fixpoint val  (model : nat -> bool) (f: Formula) : bool:=
     | bot => false
     end.
 
+Notation "model |= f" := (val model f) (at level 20, left associativity).
+
 (*a model satisfying a set of formulae*)
 (*model|=Gamma*)
 Definition mSsf (model : nat -> bool) (Gamma:Ensemble Formula)  : Prop:=
     forall (f:Formula), (In Formula Gamma f -> (val model f = true)).
 
+Notation "model |=' Gamma" := (mSsf model Gamma) (at level 20, left associativity).
 
 (*All models satisfying elements of Gamma are satisfying F*)
 (*Gamma|=f*)
 Definition sfSf (Gamma: Ensemble Formula) (f:Formula) : Prop:=
     forall (model: nat ->bool),( mSsf model Gamma -> val model f = true).
 
-
+Notation "Gamma |='' f" := (sfSf Gamma f) (at level 20, left associativity).
 
 
 
@@ -78,27 +87,6 @@ intros U A B x H. destruct H.
 +apply Union_intror. apply H.
 Qed.
 
-
-
-
-(*Consistency:*)
-Definition Cons (Gamma : Ensemble Formula) : Prop :=
-~(ND Gamma bot).
-
-Definition iCons (Gamma : Ensemble Formula) : Prop :=
-(ND Gamma bot).
-
-
-
-Lemma iConsEqiv : forall(Gamma : Ensemble Formula),
-(exists f:Formula, In Formula Gamma f /\ In Formula Gamma (neg f))->iCons Gamma.
-Proof. intros Gamma H. unfold iCons. destruct H. rename x into f.
-apply negE with (f:=f). +apply ax. apply H.
-+apply ax. apply H.
-Qed.  
-
-
-
 (*needed to prove the next lemma*)
 Lemma about_Union: forall (A:Ensemble Formula)(f1 f2: Formula),
     Union Formula (Union Formula A (Singleton Formula f1)) (Singleton Formula  f2)=
@@ -108,7 +96,7 @@ Lemma about_Union: forall (A:Ensemble Formula)(f1 f2: Formula),
     rewrite ->Union_associative. reflexivity.  
 Qed.
 
-Lemma Weakening: forall(C:Ensemble Formula) (f1 f2:Formula), ND C f1 -> ND (Union Formula C (Singleton Formula f2)) f1.
+Lemma Weakening: forall(C:Ensemble Formula) (f1 f2:Formula), C |- f1 -> Union Formula C (Singleton Formula f2) |- f1.
 Proof.
     intros C f1 f2 H. induction H.
     +apply ax. apply Union_introl. apply H.
@@ -130,21 +118,4 @@ Proof.
     +apply RAA. rewrite ->about_Union. apply IHND.
     Qed. 
 
-(*Lemma 1.4.5 (used in main proof!) *)
-Lemma ConsSyns0: forall (Gamma:Ensemble Formula) (f:Formula),
-iCons(Union Formula Gamma (Singleton Formula (neg f))) <-> ND Gamma f.
-Proof.
-    intros Gamma f.
-    split.
-    +intros H. unfold iCons in H. apply RAA in H. apply H.
-    +intros H. unfold iCons. apply negE with (f:=f). -apply Weakening. apply H. 
-        -apply ax. apply Union_intror. apply In_singleton.
-    Qed.
 
-Axiom contraposition : forall (P Q :Prop), (P <-> Q) -> (~P <-> ~Q).
-Lemma ConsSyns: forall (Gamma:Ensemble Formula) (f:Formula),
-~iCons(Union Formula Gamma (Singleton Formula (neg f))) <-> ~ND Gamma f.
-Proof.
-  intros Gamma f.
-  apply contraposition. apply ConsSyns0.
-  Qed.

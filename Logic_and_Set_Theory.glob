@@ -1,0 +1,551 @@
+DIGEST 33f9bc595fa9f06f6b42d784143048e6
+FCPL.Logic_and_Set_Theory
+R24:37 Coq.Sets.Ensembles <> <> lib
+R64:82 Coq.Sets.Powerset_facts <> <> lib
+ind 112:118 <> Formula
+constr 136:139 <> atom
+constr 164:167 <> disj
+constr 207:210 <> conj
+constr 250:252 <> imp
+constr 292:294 <> neg
+constr 323:325 <> bot
+R146:149 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R143:145 Coq.Init.Datatypes <> nat ind
+R150:156 CPL.Logic_and_Set_Theory <> Formula:1 ind
+R178:181 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R171:177 CPL.Logic_and_Set_Theory <> Formula:1 ind
+R189:192 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R182:188 CPL.Logic_and_Set_Theory <> Formula:1 ind
+R193:199 CPL.Logic_and_Set_Theory <> Formula:1 ind
+R221:224 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R214:220 CPL.Logic_and_Set_Theory <> Formula:1 ind
+R232:235 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R225:231 CPL.Logic_and_Set_Theory <> Formula:1 ind
+R236:242 CPL.Logic_and_Set_Theory <> Formula:1 ind
+R263:266 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R256:262 CPL.Logic_and_Set_Theory <> Formula:1 ind
+R274:277 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R267:273 CPL.Logic_and_Set_Theory <> Formula:1 ind
+R278:284 CPL.Logic_and_Set_Theory <> Formula:1 ind
+R305:308 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R298:304 CPL.Logic_and_Set_Theory <> Formula:1 ind
+R309:315 CPL.Logic_and_Set_Theory <> Formula:1 ind
+R329:335 CPL.Logic_and_Set_Theory <> Formula:1 ind
+R358:360 CPL.Logic_and_Set_Theory <> bot constr
+not 349:349 <> :::'~T'
+R417:420 CPL.Logic_and_Set_Theory <> atom constr
+not 406:406 <> :::'#'''_x
+R481:483 CPL.Logic_and_Set_Theory <> neg constr
+not 470:470 <> :::'~'''_x
+R549:552 CPL.Logic_and_Set_Theory <> conj constr
+not 532:532 <> :::x_'/\'''_x
+R622:625 CPL.Logic_and_Set_Theory <> disj constr
+not 605:605 <> :::x_'\/'''_x
+R695:697 CPL.Logic_and_Set_Theory <> imp constr
+not 678:678 <> :::x_'->'''_x
+ind 779:780 <> ND
+constr 829:830 <> ax
+constr 901:906 <> conjE1
+constr 984:989 <> conjE2
+constr 1067:1071 <> conjI
+constr 1163:1167 <> disjE
+constr 1358:1363 <> disjI1
+constr 1438:1443 <> disjI2
+constr 1518:1521 <> impE
+constr 1612:1615 <> impI
+constr 1729:1732 <> negE
+constr 1816:1819 <> negI
+constr 1964:1967 <> botE
+constr 2028:2030 <> RAA
+R800:803 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R784:791 Coq.Sets.Ensembles <> Ensemble def
+R793:799 CPL.Logic_and_Set_Theory <> Formula ind
+R811:814 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R804:810 CPL.Logic_and_Set_Theory <> Formula ind
+R835:842 Coq.Sets.Ensembles <> Ensemble def
+R844:850 CPL.Logic_and_Set_Theory <> Formula ind
+binder 833:833 <> C:5
+R857:863 CPL.Logic_and_Set_Theory <> Formula ind
+binder 854:854 <> f:6
+R869:870 Coq.Sets.Ensembles <> In def
+R880:880 CPL.Logic_and_Set_Theory <> C:5 var
+R883:883 CPL.Logic_and_Set_Theory <> f:6 var
+R872:878 CPL.Logic_and_Set_Theory <> Formula ind
+binder 867:867 <> H:7
+R888:889 CPL.Logic_and_Set_Theory <> ND:3 ind
+R893:893 CPL.Logic_and_Set_Theory <> f:6 var
+R891:891 CPL.Logic_and_Set_Theory <> C:5 var
+R911:918 Coq.Sets.Ensembles <> Ensemble def
+R920:926 CPL.Logic_and_Set_Theory <> Formula ind
+binder 909:909 <> C:8
+R937:943 CPL.Logic_and_Set_Theory <> Formula ind
+binder 930:931 <> f1:9
+binder 933:934 <> f2:10
+R949:950 CPL.Logic_and_Set_Theory <> ND:3 ind
+R955:958 CPL.Logic_and_Set_Theory <> conj constr
+R960:961 CPL.Logic_and_Set_Theory <> f1:9 var
+R963:964 CPL.Logic_and_Set_Theory <> f2:10 var
+R952:952 CPL.Logic_and_Set_Theory <> C:8 var
+binder 947:947 <> H:11
+R970:971 CPL.Logic_and_Set_Theory <> ND:3 ind
+R975:976 CPL.Logic_and_Set_Theory <> f1:9 var
+R973:973 CPL.Logic_and_Set_Theory <> C:8 var
+R994:1001 Coq.Sets.Ensembles <> Ensemble def
+R1003:1009 CPL.Logic_and_Set_Theory <> Formula ind
+binder 992:992 <> C:12
+R1020:1026 CPL.Logic_and_Set_Theory <> Formula ind
+binder 1013:1014 <> f1:13
+binder 1016:1017 <> f2:14
+R1032:1033 CPL.Logic_and_Set_Theory <> ND:3 ind
+R1038:1041 CPL.Logic_and_Set_Theory <> conj constr
+R1043:1044 CPL.Logic_and_Set_Theory <> f1:13 var
+R1046:1047 CPL.Logic_and_Set_Theory <> f2:14 var
+R1035:1035 CPL.Logic_and_Set_Theory <> C:12 var
+binder 1030:1030 <> H:15
+R1053:1054 CPL.Logic_and_Set_Theory <> ND:3 ind
+R1058:1059 CPL.Logic_and_Set_Theory <> f2:14 var
+R1056:1056 CPL.Logic_and_Set_Theory <> C:12 var
+R1076:1083 Coq.Sets.Ensembles <> Ensemble def
+R1085:1091 CPL.Logic_and_Set_Theory <> Formula ind
+binder 1074:1074 <> C:16
+R1102:1108 CPL.Logic_and_Set_Theory <> Formula ind
+binder 1095:1096 <> f1:17
+binder 1098:1099 <> f2:18
+R1115:1116 CPL.Logic_and_Set_Theory <> ND:3 ind
+R1120:1121 CPL.Logic_and_Set_Theory <> f1:17 var
+R1118:1118 CPL.Logic_and_Set_Theory <> C:16 var
+binder 1112:1113 <> H1:19
+R1128:1129 CPL.Logic_and_Set_Theory <> ND:3 ind
+R1133:1134 CPL.Logic_and_Set_Theory <> f2:18 var
+R1131:1131 CPL.Logic_and_Set_Theory <> C:16 var
+binder 1125:1126 <> H2:20
+R1139:1140 CPL.Logic_and_Set_Theory <> ND:3 ind
+R1145:1148 CPL.Logic_and_Set_Theory <> conj constr
+R1150:1151 CPL.Logic_and_Set_Theory <> f1:17 var
+R1153:1154 CPL.Logic_and_Set_Theory <> f2:18 var
+R1142:1142 CPL.Logic_and_Set_Theory <> C:16 var
+R1172:1179 Coq.Sets.Ensembles <> Ensemble def
+R1181:1187 CPL.Logic_and_Set_Theory <> Formula ind
+binder 1170:1170 <> C:21
+R1199:1205 CPL.Logic_and_Set_Theory <> Formula ind
+binder 1191:1192 <> f1:22
+binder 1194:1195 <> f2:23
+binder 1197:1197 <> f:24
+R1212:1213 CPL.Logic_and_Set_Theory <> ND:3 ind
+R1256:1256 CPL.Logic_and_Set_Theory <> f:24 var
+R1216:1220 Coq.Sets.Ensembles <> Union ind
+R1230:1230 CPL.Logic_and_Set_Theory <> C:21 var
+R1233:1241 Coq.Sets.Ensembles <> Singleton ind
+R1251:1252 CPL.Logic_and_Set_Theory <> f1:22 var
+R1243:1249 CPL.Logic_and_Set_Theory <> Formula ind
+R1222:1228 CPL.Logic_and_Set_Theory <> Formula ind
+binder 1209:1210 <> H1:25
+R1272:1273 CPL.Logic_and_Set_Theory <> ND:3 ind
+R1316:1316 CPL.Logic_and_Set_Theory <> f:24 var
+R1276:1280 Coq.Sets.Ensembles <> Union ind
+R1290:1290 CPL.Logic_and_Set_Theory <> C:21 var
+R1293:1301 Coq.Sets.Ensembles <> Singleton ind
+R1311:1312 CPL.Logic_and_Set_Theory <> f2:23 var
+R1303:1309 CPL.Logic_and_Set_Theory <> Formula ind
+R1282:1288 CPL.Logic_and_Set_Theory <> Formula ind
+binder 1269:1270 <> H2:26
+R1323:1324 CPL.Logic_and_Set_Theory <> ND:3 ind
+R1329:1332 CPL.Logic_and_Set_Theory <> disj constr
+R1334:1335 CPL.Logic_and_Set_Theory <> f1:22 var
+R1337:1338 CPL.Logic_and_Set_Theory <> f2:23 var
+R1326:1326 CPL.Logic_and_Set_Theory <> C:21 var
+binder 1320:1321 <> H3:27
+R1344:1345 CPL.Logic_and_Set_Theory <> ND:3 ind
+R1349:1349 CPL.Logic_and_Set_Theory <> f:24 var
+R1347:1347 CPL.Logic_and_Set_Theory <> C:21 var
+R1368:1375 Coq.Sets.Ensembles <> Ensemble def
+R1377:1383 CPL.Logic_and_Set_Theory <> Formula ind
+binder 1366:1366 <> C:28
+R1393:1399 CPL.Logic_and_Set_Theory <> Formula ind
+binder 1387:1388 <> f1:29
+binder 1390:1391 <> f2:30
+R1405:1406 CPL.Logic_and_Set_Theory <> ND:3 ind
+R1410:1411 CPL.Logic_and_Set_Theory <> f1:29 var
+R1408:1408 CPL.Logic_and_Set_Theory <> C:28 var
+binder 1403:1403 <> H:31
+R1414:1415 CPL.Logic_and_Set_Theory <> ND:3 ind
+R1420:1423 CPL.Logic_and_Set_Theory <> disj constr
+R1425:1426 CPL.Logic_and_Set_Theory <> f1:29 var
+R1428:1429 CPL.Logic_and_Set_Theory <> f2:30 var
+R1417:1417 CPL.Logic_and_Set_Theory <> C:28 var
+R1448:1455 Coq.Sets.Ensembles <> Ensemble def
+R1457:1463 CPL.Logic_and_Set_Theory <> Formula ind
+binder 1446:1446 <> C:32
+R1473:1479 CPL.Logic_and_Set_Theory <> Formula ind
+binder 1467:1468 <> f1:33
+binder 1470:1471 <> f2:34
+R1485:1486 CPL.Logic_and_Set_Theory <> ND:3 ind
+R1490:1491 CPL.Logic_and_Set_Theory <> f2:34 var
+R1488:1488 CPL.Logic_and_Set_Theory <> C:32 var
+binder 1483:1483 <> H:35
+R1494:1495 CPL.Logic_and_Set_Theory <> ND:3 ind
+R1500:1503 CPL.Logic_and_Set_Theory <> disj constr
+R1505:1506 CPL.Logic_and_Set_Theory <> f1:33 var
+R1508:1509 CPL.Logic_and_Set_Theory <> f2:34 var
+R1497:1497 CPL.Logic_and_Set_Theory <> C:32 var
+R1526:1533 Coq.Sets.Ensembles <> Ensemble def
+R1535:1541 CPL.Logic_and_Set_Theory <> Formula ind
+binder 1524:1524 <> C:36
+R1551:1557 CPL.Logic_and_Set_Theory <> Formula ind
+binder 1545:1546 <> f1:37
+binder 1548:1549 <> f2:38
+R1564:1565 CPL.Logic_and_Set_Theory <> ND:3 ind
+R1570:1572 CPL.Logic_and_Set_Theory <> imp constr
+R1574:1575 CPL.Logic_and_Set_Theory <> f1:37 var
+R1577:1578 CPL.Logic_and_Set_Theory <> f2:38 var
+R1567:1567 CPL.Logic_and_Set_Theory <> C:36 var
+binder 1561:1562 <> H1:39
+R1586:1587 CPL.Logic_and_Set_Theory <> ND:3 ind
+R1592:1593 CPL.Logic_and_Set_Theory <> f1:37 var
+R1589:1589 CPL.Logic_and_Set_Theory <> C:36 var
+binder 1583:1584 <> H2:40
+R1598:1599 CPL.Logic_and_Set_Theory <> ND:3 ind
+R1603:1604 CPL.Logic_and_Set_Theory <> f2:38 var
+R1601:1601 CPL.Logic_and_Set_Theory <> C:36 var
+R1620:1627 Coq.Sets.Ensembles <> Ensemble def
+R1629:1635 CPL.Logic_and_Set_Theory <> Formula ind
+binder 1618:1618 <> C:41
+R1645:1651 CPL.Logic_and_Set_Theory <> Formula ind
+binder 1639:1640 <> f1:42
+binder 1642:1643 <> f2:43
+R1657:1658 CPL.Logic_and_Set_Theory <> ND:3 ind
+R1701:1702 CPL.Logic_and_Set_Theory <> f2:43 var
+R1661:1665 Coq.Sets.Ensembles <> Union ind
+R1675:1675 CPL.Logic_and_Set_Theory <> C:41 var
+R1678:1686 Coq.Sets.Ensembles <> Singleton ind
+R1696:1697 CPL.Logic_and_Set_Theory <> f1:42 var
+R1688:1694 CPL.Logic_and_Set_Theory <> Formula ind
+R1667:1673 CPL.Logic_and_Set_Theory <> Formula ind
+binder 1655:1655 <> H:44
+R1706:1707 CPL.Logic_and_Set_Theory <> ND:3 ind
+R1712:1714 CPL.Logic_and_Set_Theory <> imp constr
+R1716:1717 CPL.Logic_and_Set_Theory <> f1:42 var
+R1719:1720 CPL.Logic_and_Set_Theory <> f2:43 var
+R1709:1709 CPL.Logic_and_Set_Theory <> C:41 var
+R1737:1744 Coq.Sets.Ensembles <> Ensemble def
+R1746:1752 CPL.Logic_and_Set_Theory <> Formula ind
+binder 1735:1735 <> C:45
+R1759:1765 CPL.Logic_and_Set_Theory <> Formula ind
+binder 1756:1756 <> f:46
+R1773:1774 CPL.Logic_and_Set_Theory <> ND:3 ind
+R1778:1778 CPL.Logic_and_Set_Theory <> f:46 var
+R1776:1776 CPL.Logic_and_Set_Theory <> C:45 var
+binder 1769:1770 <> H1:47
+R1786:1787 CPL.Logic_and_Set_Theory <> ND:3 ind
+R1792:1794 CPL.Logic_and_Set_Theory <> neg constr
+R1796:1796 CPL.Logic_and_Set_Theory <> f:46 var
+R1789:1789 CPL.Logic_and_Set_Theory <> C:45 var
+binder 1782:1783 <> H2:48
+R1801:1802 CPL.Logic_and_Set_Theory <> ND:3 ind
+R1806:1808 CPL.Logic_and_Set_Theory <> bot constr
+R1804:1804 CPL.Logic_and_Set_Theory <> C:45 var
+R1824:1831 Coq.Sets.Ensembles <> Ensemble def
+R1833:1839 CPL.Logic_and_Set_Theory <> Formula ind
+binder 1822:1822 <> C:49
+R1846:1852 CPL.Logic_and_Set_Theory <> Formula ind
+binder 1843:1843 <> f:50
+R1859:1860 CPL.Logic_and_Set_Theory <> ND:3 ind
+R1902:1904 CPL.Logic_and_Set_Theory <> bot constr
+R1863:1867 Coq.Sets.Ensembles <> Union ind
+R1877:1877 CPL.Logic_and_Set_Theory <> C:49 var
+R1880:1888 Coq.Sets.Ensembles <> Singleton ind
+R1898:1898 CPL.Logic_and_Set_Theory <> f:50 var
+R1890:1896 CPL.Logic_and_Set_Theory <> Formula ind
+R1869:1875 CPL.Logic_and_Set_Theory <> Formula ind
+binder 1856:1856 <> H:51
+R1909:1910 CPL.Logic_and_Set_Theory <> ND:3 ind
+R1915:1917 CPL.Logic_and_Set_Theory <> neg constr
+R1919:1919 CPL.Logic_and_Set_Theory <> f:50 var
+R1912:1912 CPL.Logic_and_Set_Theory <> C:49 var
+R1972:1979 Coq.Sets.Ensembles <> Ensemble def
+R1981:1987 CPL.Logic_and_Set_Theory <> Formula ind
+binder 1970:1970 <> C:52
+R1993:1999 CPL.Logic_and_Set_Theory <> Formula ind
+binder 1991:1991 <> f:53
+R2005:2006 CPL.Logic_and_Set_Theory <> ND:3 ind
+R2010:2012 CPL.Logic_and_Set_Theory <> bot constr
+R2008:2008 CPL.Logic_and_Set_Theory <> C:52 var
+binder 2003:2003 <> H:54
+R2015:2016 CPL.Logic_and_Set_Theory <> ND:3 ind
+R2020:2020 CPL.Logic_and_Set_Theory <> f:53 var
+R2018:2018 CPL.Logic_and_Set_Theory <> C:52 var
+R2035:2042 Coq.Sets.Ensembles <> Ensemble def
+R2044:2050 CPL.Logic_and_Set_Theory <> Formula ind
+binder 2033:2033 <> C:55
+R2056:2062 CPL.Logic_and_Set_Theory <> Formula ind
+binder 2054:2054 <> f:56
+R2068:2069 CPL.Logic_and_Set_Theory <> ND:3 ind
+R2117:2119 CPL.Logic_and_Set_Theory <> bot constr
+R2072:2076 Coq.Sets.Ensembles <> Union ind
+R2086:2086 CPL.Logic_and_Set_Theory <> C:55 var
+R2089:2097 Coq.Sets.Ensembles <> Singleton ind
+R2108:2110 CPL.Logic_and_Set_Theory <> neg constr
+R2112:2112 CPL.Logic_and_Set_Theory <> f:56 var
+R2099:2105 CPL.Logic_and_Set_Theory <> Formula ind
+R2078:2084 CPL.Logic_and_Set_Theory <> Formula ind
+binder 2066:2066 <> H:57
+R2122:2123 CPL.Logic_and_Set_Theory <> ND:3 ind
+R2127:2127 CPL.Logic_and_Set_Theory <> f:56 var
+R2125:2125 CPL.Logic_and_Set_Theory <> C:55 var
+R2154:2155 CPL.Logic_and_Set_Theory <> ND ind
+not 2140:2140 <> :::x_'|-'_x
+def 2226:2228 <> val
+R2243:2246 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2240:2242 Coq.Init.Datatypes <> nat ind
+R2247:2250 Coq.Init.Datatypes <> bool ind
+binder 2232:2236 <> model:58
+R2257:2263 CPL.Logic_and_Set_Theory <> Formula ind
+binder 2254:2254 <> f:59
+R2268:2271 Coq.Init.Datatypes <> bool ind
+R2285:2285 CPL.Logic_and_Set_Theory <> f:59 var
+R2298:2301 CPL.Logic_and_Set_Theory <> atom constr
+R2307:2311 CPL.Logic_and_Set_Theory <> model:58 var
+R2321:2323 CPL.Logic_and_Set_Theory <> neg constr
+R2332:2335 Coq.Init.Datatypes <> negb def
+R2337:2339 CPL.Logic_and_Set_Theory <> val:60 def
+R2341:2345 CPL.Logic_and_Set_Theory <> model:58 var
+R2357:2360 CPL.Logic_and_Set_Theory <> disj constr
+R2371:2373 Coq.Init.Datatypes <> orb def
+R2391:2393 CPL.Logic_and_Set_Theory <> val:60 def
+R2395:2399 CPL.Logic_and_Set_Theory <> model:58 var
+R2376:2378 CPL.Logic_and_Set_Theory <> val:60 def
+R2380:2384 CPL.Logic_and_Set_Theory <> model:58 var
+R2411:2414 CPL.Logic_and_Set_Theory <> conj constr
+R2424:2427 Coq.Init.Datatypes <> andb def
+R2446:2448 CPL.Logic_and_Set_Theory <> val:60 def
+R2450:2454 CPL.Logic_and_Set_Theory <> model:58 var
+R2430:2432 CPL.Logic_and_Set_Theory <> val:60 def
+R2434:2438 CPL.Logic_and_Set_Theory <> model:58 var
+R2466:2468 CPL.Logic_and_Set_Theory <> imp constr
+R2479:2481 Coq.Init.Datatypes <> orb def
+R2505:2507 CPL.Logic_and_Set_Theory <> val:60 def
+R2509:2513 CPL.Logic_and_Set_Theory <> model:58 var
+R2483:2486 Coq.Init.Datatypes <> negb def
+R2488:2490 CPL.Logic_and_Set_Theory <> val:60 def
+R2492:2496 CPL.Logic_and_Set_Theory <> model:58 var
+R2525:2527 CPL.Logic_and_Set_Theory <> bot constr
+R2532:2536 Coq.Init.Datatypes <> false constr
+R2574:2576 CPL.Logic_and_Set_Theory <> val def
+not 2557:2557 <> :::x_'|='_x
+def 2692:2695 <> mSsf
+R2709:2712 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2706:2708 Coq.Init.Datatypes <> nat ind
+R2713:2716 Coq.Init.Datatypes <> bool ind
+binder 2698:2702 <> model:62
+R2726:2733 Coq.Sets.Ensembles <> Ensemble def
+R2735:2741 CPL.Logic_and_Set_Theory <> Formula ind
+binder 2720:2724 <> Gamma:63
+R2768:2774 CPL.Logic_and_Set_Theory <> Formula ind
+binder 2766:2766 <> f:64
+R2797:2801 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2820:2820 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2779:2780 Coq.Sets.Ensembles <> In def
+R2790:2794 CPL.Logic_and_Set_Theory <> Gamma:63 var
+R2796:2796 CPL.Logic_and_Set_Theory <> f:64 var
+R2782:2788 CPL.Logic_and_Set_Theory <> Formula ind
+R2813:2815 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2802:2804 CPL.Logic_and_Set_Theory <> val def
+R2806:2810 CPL.Logic_and_Set_Theory <> model:62 var
+R2812:2812 CPL.Logic_and_Set_Theory <> f:64 var
+R2816:2819 Coq.Init.Datatypes <> true constr
+R2856:2859 CPL.Logic_and_Set_Theory <> mSsf def
+not 2834:2834 <> :::x_'|='''_x
+def 2995:2998 <> sfSf
+R3008:3015 Coq.Sets.Ensembles <> Ensemble def
+R3017:3023 CPL.Logic_and_Set_Theory <> Formula ind
+binder 3001:3005 <> Gamma:65
+R3029:3035 CPL.Logic_and_Set_Theory <> Formula ind
+binder 3027:3027 <> f:66
+R3069:3071 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3066:3068 Coq.Init.Datatypes <> nat ind
+R3072:3075 Coq.Init.Datatypes <> bool ind
+binder 3059:3063 <> model:67
+R3096:3099 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3080:3083 CPL.Logic_and_Set_Theory <> mSsf def
+R3085:3089 CPL.Logic_and_Set_Theory <> model:67 var
+R3091:3095 CPL.Logic_and_Set_Theory <> Gamma:65 var
+R3111:3113 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3100:3102 CPL.Logic_and_Set_Theory <> val def
+R3104:3108 CPL.Logic_and_Set_Theory <> model:67 var
+R3110:3110 CPL.Logic_and_Set_Theory <> f:66 var
+R3114:3117 Coq.Init.Datatypes <> true constr
+R3150:3153 CPL.Logic_and_Set_Theory <> sfSf def
+not 3131:3131 <> :::x_'|='''''_x
+ax 3238:3240 <> pbc
+binder 3252:3252 <> P:68
+R3262:3262 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3274:3278 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3265:3268 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3263:3263 Coq.Init.Logic <> ::type_scope:'~'_x not
+R3264:3264 CPL.Logic_and_Set_Theory <> P:68 var
+R3269:3273 Coq.Init.Logic <> False ind
+R3279:3279 CPL.Logic_and_Set_Theory <> P:68 var
+ax 3288:3293 <> dnegE1
+binder 3304:3304 <> P:70
+R3316:3317 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3313:3313 Coq.Init.Logic <> ::type_scope:'~'_x not
+R3314:3314 Coq.Init.Logic <> ::type_scope:'~'_x not
+R3315:3315 CPL.Logic_and_Set_Theory <> P:70 var
+R3318:3318 CPL.Logic_and_Set_Theory <> P:70 var
+ax 3328:3333 <> dnegE2
+binder 3344:3344 <> P:72
+R3354:3355 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3353:3353 CPL.Logic_and_Set_Theory <> P:72 var
+R3356:3356 Coq.Init.Logic <> ::type_scope:'~'_x not
+R3357:3357 Coq.Init.Logic <> ::type_scope:'~'_x not
+R3358:3358 CPL.Logic_and_Set_Theory <> P:72 var
+ax 3368:3382 <> excluded_middle
+binder 3393:3393 <> P:74
+R3402:3405 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R3401:3401 CPL.Logic_and_Set_Theory <> P:74 var
+R3406:3406 Coq.Init.Logic <> ::type_scope:'~'_x not
+R3407:3407 CPL.Logic_and_Set_Theory <> P:74 var
+prf 3417:3424 <> Union_In
+binder 3436:3436 <> U:76
+R3451:3458 Coq.Sets.Ensembles <> Ensemble def
+R3460:3460 CPL.Logic_and_Set_Theory <> U:76 var
+binder 3445:3445 <> A:77
+binder 3447:3447 <> B:78
+R3466:3466 CPL.Logic_and_Set_Theory <> U:76 var
+binder 3464:3464 <> x:79
+R3490:3493 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3478:3481 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R3470:3471 Coq.Sets.Ensembles <> In def
+R3475:3475 CPL.Logic_and_Set_Theory <> A:77 var
+R3477:3477 CPL.Logic_and_Set_Theory <> x:79 var
+R3473:3473 CPL.Logic_and_Set_Theory <> U:76 var
+R3482:3483 Coq.Sets.Ensembles <> In def
+R3487:3487 CPL.Logic_and_Set_Theory <> B:78 var
+R3489:3489 CPL.Logic_and_Set_Theory <> x:79 var
+R3485:3485 CPL.Logic_and_Set_Theory <> U:76 var
+R3494:3495 Coq.Sets.Ensembles <> In def
+R3500:3504 Coq.Sets.Ensembles <> Union ind
+R3508:3508 CPL.Logic_and_Set_Theory <> A:77 var
+R3510:3510 CPL.Logic_and_Set_Theory <> B:78 var
+R3506:3506 CPL.Logic_and_Set_Theory <> U:76 var
+R3513:3513 CPL.Logic_and_Set_Theory <> x:79 var
+R3497:3497 CPL.Logic_and_Set_Theory <> U:76 var
+R3553:3564 Coq.Sets.Ensembles <> Union_introl constr
+R3553:3564 Coq.Sets.Ensembles <> Union_introl constr
+R3583:3594 Coq.Sets.Ensembles <> Union_intror constr
+R3583:3594 Coq.Sets.Ensembles <> Union_intror constr
+prf 3653:3663 <> about_Union
+R3676:3683 Coq.Sets.Ensembles <> Ensemble def
+R3685:3691 CPL.Logic_and_Set_Theory <> Formula ind
+binder 3674:3674 <> A:80
+R3701:3707 CPL.Logic_and_Set_Theory <> Formula ind
+binder 3694:3695 <> f1:81
+binder 3697:3698 <> f2:82
+R3793:3798 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3715:3719 Coq.Sets.Ensembles <> Union ind
+R3730:3734 Coq.Sets.Ensembles <> Union ind
+R3744:3744 CPL.Logic_and_Set_Theory <> A:80 var
+R3747:3755 Coq.Sets.Ensembles <> Singleton ind
+R3765:3766 CPL.Logic_and_Set_Theory <> f1:81 var
+R3757:3763 CPL.Logic_and_Set_Theory <> Formula ind
+R3736:3742 CPL.Logic_and_Set_Theory <> Formula ind
+R3771:3779 Coq.Sets.Ensembles <> Singleton ind
+R3790:3791 CPL.Logic_and_Set_Theory <> f2:82 var
+R3781:3787 CPL.Logic_and_Set_Theory <> Formula ind
+R3721:3727 CPL.Logic_and_Set_Theory <> Formula ind
+R3799:3803 Coq.Sets.Ensembles <> Union ind
+R3814:3818 Coq.Sets.Ensembles <> Union ind
+R3828:3828 CPL.Logic_and_Set_Theory <> A:80 var
+R3831:3839 Coq.Sets.Ensembles <> Singleton ind
+R3850:3851 CPL.Logic_and_Set_Theory <> f2:82 var
+R3841:3847 CPL.Logic_and_Set_Theory <> Formula ind
+R3820:3826 CPL.Logic_and_Set_Theory <> Formula ind
+R3856:3864 Coq.Sets.Ensembles <> Singleton ind
+R3874:3875 CPL.Logic_and_Set_Theory <> f1:81 var
+R3866:3872 CPL.Logic_and_Set_Theory <> Formula ind
+R3805:3811 CPL.Logic_and_Set_Theory <> Formula ind
+R3916:3932 Coq.Sets.Powerset_facts <> Union_associative thm
+R3916:3932 Coq.Sets.Powerset_facts <> Union_associative thm
+R3916:3932 Coq.Sets.Powerset_facts <> Union_associative thm
+R3978:3986 Coq.Sets.Ensembles <> Singleton ind
+R3988:3994 CPL.Logic_and_Set_Theory <> Formula ind
+R3950:3966 Coq.Sets.Powerset_facts <> Union_commutative thm
+R3978:3986 Coq.Sets.Ensembles <> Singleton ind
+R3988:3994 CPL.Logic_and_Set_Theory <> Formula ind
+R3950:3966 Coq.Sets.Powerset_facts <> Union_commutative thm
+R3978:3986 Coq.Sets.Ensembles <> Singleton ind
+R3988:3994 CPL.Logic_and_Set_Theory <> Formula ind
+R3950:3966 Coq.Sets.Powerset_facts <> Union_commutative thm
+R4016:4032 Coq.Sets.Powerset_facts <> Union_associative thm
+R4016:4032 Coq.Sets.Powerset_facts <> Union_associative thm
+R4016:4032 Coq.Sets.Powerset_facts <> Union_associative thm
+prf 4062:4070 <> Weakening
+R4082:4089 Coq.Sets.Ensembles <> Ensemble def
+R4091:4097 CPL.Logic_and_Set_Theory <> Formula ind
+binder 4080:4080 <> C:83
+R4107:4113 CPL.Logic_and_Set_Theory <> Formula ind
+binder 4101:4102 <> f1:84
+binder 4104:4105 <> f2:85
+R4124:4127 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4118:4121 CPL.Logic_and_Set_Theory <> :::x_'|-'_x not
+R4117:4117 CPL.Logic_and_Set_Theory <> C:83 var
+R4122:4123 CPL.Logic_and_Set_Theory <> f1:84 var
+R4166:4169 CPL.Logic_and_Set_Theory <> :::x_'|-'_x not
+R4128:4132 Coq.Sets.Ensembles <> Union ind
+R4142:4142 CPL.Logic_and_Set_Theory <> C:83 var
+R4145:4153 Coq.Sets.Ensembles <> Singleton ind
+R4163:4164 CPL.Logic_and_Set_Theory <> f2:85 var
+R4155:4161 CPL.Logic_and_Set_Theory <> Formula ind
+R4134:4140 CPL.Logic_and_Set_Theory <> Formula ind
+R4170:4171 CPL.Logic_and_Set_Theory <> f1:84 var
+R4227:4228 CPL.Logic_and_Set_Theory <> ax constr
+R4227:4228 CPL.Logic_and_Set_Theory <> ax constr
+R4237:4248 Coq.Sets.Ensembles <> Union_introl constr
+R4237:4248 Coq.Sets.Ensembles <> Union_introl constr
+R4271:4276 CPL.Logic_and_Set_Theory <> conjE1 constr
+R4271:4276 CPL.Logic_and_Set_Theory <> conjE1 constr
+R4310:4315 CPL.Logic_and_Set_Theory <> conjE2 constr
+R4310:4315 CPL.Logic_and_Set_Theory <> conjE2 constr
+R4349:4353 CPL.Logic_and_Set_Theory <> conjI constr
+R4349:4353 CPL.Logic_and_Set_Theory <> conjI constr
+R4410:4414 Coq.Sets.Ensembles <> Union ind
+R4427:4435 Coq.Sets.Ensembles <> Singleton ind
+R4437:4443 CPL.Logic_and_Set_Theory <> Formula ind
+R4416:4422 CPL.Logic_and_Set_Theory <> Formula ind
+R4395:4399 CPL.Logic_and_Set_Theory <> disjE constr
+R4410:4414 Coq.Sets.Ensembles <> Union ind
+R4427:4435 Coq.Sets.Ensembles <> Singleton ind
+R4437:4443 CPL.Logic_and_Set_Theory <> Formula ind
+R4416:4422 CPL.Logic_and_Set_Theory <> Formula ind
+R4395:4399 CPL.Logic_and_Set_Theory <> disjE constr
+R4488:4498 CPL.Logic_and_Set_Theory <> about_Union thm
+R4488:4498 CPL.Logic_and_Set_Theory <> about_Union thm
+R4488:4498 CPL.Logic_and_Set_Theory <> about_Union thm
+R4533:4543 CPL.Logic_and_Set_Theory <> about_Union thm
+R4533:4543 CPL.Logic_and_Set_Theory <> about_Union thm
+R4533:4543 CPL.Logic_and_Set_Theory <> about_Union thm
+R4592:4597 CPL.Logic_and_Set_Theory <> disjI1 constr
+R4592:4597 CPL.Logic_and_Set_Theory <> disjI1 constr
+R4623:4628 CPL.Logic_and_Set_Theory <> disjI2 constr
+R4623:4628 CPL.Logic_and_Set_Theory <> disjI2 constr
+R4654:4657 CPL.Logic_and_Set_Theory <> impE constr
+R4654:4657 CPL.Logic_and_Set_Theory <> impE constr
+R4730:4733 CPL.Logic_and_Set_Theory <> impI constr
+R4730:4733 CPL.Logic_and_Set_Theory <> impI constr
+R4746:4756 CPL.Logic_and_Set_Theory <> about_Union thm
+R4746:4756 CPL.Logic_and_Set_Theory <> about_Union thm
+R4746:4756 CPL.Logic_and_Set_Theory <> about_Union thm
+R4782:4785 CPL.Logic_and_Set_Theory <> negE constr
+R4782:4785 CPL.Logic_and_Set_Theory <> negE constr
+R4838:4841 CPL.Logic_and_Set_Theory <> negI constr
+R4838:4841 CPL.Logic_and_Set_Theory <> negI constr
+R4854:4864 CPL.Logic_and_Set_Theory <> about_Union thm
+R4854:4864 CPL.Logic_and_Set_Theory <> about_Union thm
+R4854:4864 CPL.Logic_and_Set_Theory <> about_Union thm
+R4890:4893 CPL.Logic_and_Set_Theory <> botE constr
+R4890:4893 CPL.Logic_and_Set_Theory <> botE constr
+R4919:4921 CPL.Logic_and_Set_Theory <> RAA constr
+R4919:4921 CPL.Logic_and_Set_Theory <> RAA constr
+R4934:4944 CPL.Logic_and_Set_Theory <> about_Union thm
+R4934:4944 CPL.Logic_and_Set_Theory <> about_Union thm
+R4934:4944 CPL.Logic_and_Set_Theory <> about_Union thm
