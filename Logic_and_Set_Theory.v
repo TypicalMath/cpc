@@ -33,7 +33,7 @@ Inductive ND : Ensemble Formula -> Formula -> Prop :=
     | impE (C:Ensemble Formula) (f1 f2:Formula) (H1:ND C (imp f1 f2)) (H2:ND C (f1)): ND C f2
     | impI (C:Ensemble Formula) (f1 f2:Formula) (H:ND (Union Formula C (Singleton Formula f1)) f2): ND C (imp f1 f2)
     | negE (C:Ensemble Formula) (f :Formula) (H1: ND C f) (H2: ND C (neg f)): ND C bot
-    | negI (C:Ensemble Formula) (f :Formula) (H: ND (Union Formula C (Singleton Formula f)) bot ): ND C (neg f) (*Momkene context ghalat bashe!!!*)
+    | negI (C:Ensemble Formula) (f :Formula) (H: ND (Union Formula C (Singleton Formula f)) bot ): ND C (neg f) 
     | botE (C:Ensemble Formula) (f:Formula) (H:ND C bot):ND C f
     | RAA (C:Ensemble Formula) (f:Formula) (H:ND (Union Formula C (Singleton Formula (neg f))) bot):ND C f.
 
@@ -119,3 +119,10 @@ Proof.
     Qed. 
 
 
+    Lemma Strong_Weakening: forall(C G:Ensemble Formula) (f :Formula), C |- f -> Union Formula C G |- f.
+    intros C G f H. induction H.
+    +apply ax. apply Union_introl. apply H.
+    +apply conjE1 in IHND. apply IHND.
+    +apply conjE2 in IHND. apply IHND.
+    +apply conjI. -apply IHND1. -apply IHND2.
+    Admitted.
