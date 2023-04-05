@@ -1,6 +1,26 @@
+From Coq Require Import Lists.List.
 From Coq Require Import Sets.Ensembles.
+From Coq Require Import Sets.Powerset_facts.
 Require Import Logic_and_Set_Theory.
 Require Import Cons.
+
+(*Stronger natural deduction*)
+Inductive SND : list Formula -> Ensemble Formula -> Formula -> Prop :=
+    | Sax (C:Ensemble Formula) (f: Formula) (H:In Formula C f) : SND (cons f nil) C f
+    | SconjE1 (l: list Formula) (C:Ensemble Formula) (f1 f2: Formula) (H:SND l C (conj f1 f2)) : SND (l ++ (cons f1 nil)) C f1
+    | SconjE2 (l: list Formula) (C:Ensemble Formula) (f1 f2: Formula) (H:SND l C (conj f1 f2)) : SND (l ++ (cons f2 nil)) C f2
+    | SconjI (l1 l2: list Formula) (C:Ensemble Formula) (f1 f2: Formula) (H1:SND l1 C f1) (H2:SND l2 C f2) : SND (l1 ++ l2 ++ (cons (conj f1 f2) nil))  C (conj f1 f2)
+    | SdisjE (l1 l2 l3: list Formula) (C:Ensemble Formula) (f1 f2 f:Formula) (H1:SND l1 (Union Formula C (Singleton Formula f1)) f) 
+        (H2:SND l2 (Union Formula C (Singleton Formula f2)) f) (H3:SND l3 C (disj f1 f2) ): SND (l1 ++ l2 ++ l3 ++ (cons f nil)) C f 
+    | SdisjI1 (l: list Formula) (C:Ensemble Formula) (f1 f2:Formula) (H:SND l C f1):SND (l ++ (cons (disj f1 f2) nil)) C (disj f1 f2)
+    | SdisjI2 (l: list Formula) (C:Ensemble Formula) (f1 f2:Formula) (H:SND l C f2):SND (l ++ (cons (disj f1 f2) nil)) C (disj f1 f2)
+    | SimpE  (l1 l2: list Formula) (C:Ensemble Formula) (f1 f2:Formula) (H1:SND l1 C (imp f1 f2)) (H2:SND l2 C (f1)): SND (l1 ++ l2 ++ (cons f2 nil)) C f2
+    | SimpI (l: list Formula) (C:Ensemble Formula) (f1 f2:Formula) (H:SND l (Union Formula C (Singleton Formula f1)) f2): SND (l ++ (cons (imp f1 f2) nil)) C (imp f1 f2)
+    | SnegE (l1 l2: list Formula) (C:Ensemble Formula) (f :Formula) (H1: SND l1 C f) (H2: SND l2 C (neg f)): SND (l1 ++ l2 ++ (cons bot nil)) C bot
+    | SnegI (l: list Formula) (C:Ensemble Formula) (f :Formula) (H: SND l (Union Formula C (Singleton Formula f)) bot ): SND (l ++ (cons (neg f) nil)) C (neg f) 
+    | SbotE (l: list Formula) (C:Ensemble Formula) (f:Formula) (H:SND l C bot):SND (l ++ (cons f nil)) C f
+    | SRAA (l: list Formula) (C:Ensemble Formula) (f:Formula) (H:SND l (Union Formula C (Singleton Formula (neg f))) bot):SND (l ++ (cons f nil)) C f.
+
 
 Section listing.
 
@@ -26,6 +46,25 @@ Gamma_seq (S n) Gamma (Union Formula Gamma_n (Singleton Formula (F n)))
 | iconsis (n:nat) (Gamma Gamma_n : Ensemble Formula) (H0 : Gamma_seq n Gamma Gamma_n) (H : ~Cons (Union Formula Gamma_n (Singleton Formula (F n)))):
 Gamma_seq (S n) Gamma Gamma_n.
 
+(*The next two lemmas were defined to use for the lemma Gamma_n_equality. But may be useful anyway!*)
+Lemma Gamma_equality : forall (Gamma Gamma' : Ensemble Formula),
+Gamma_seq 0 Gamma Gamma' -> Gamma = Gamma'.
+Proof.
+    intros. inversion H. reflexivity.
+    Qed.
+
+Lemma Gamma_inclusion_0: forall (Gamma Gamma':Ensemble Formula) (n:nat),
+Gamma_seq n Gamma Gamma'-> Included Formula Gamma Gamma'.
+Proof.
+    intros Gamma Gamma' n H.
+    induction H. 
+    -unfold Included. intros x s. apply s.
+    -unfold Included. unfold Included in IHGamma_seq. intros f Hf. apply Union_introl.
+    apply IHGamma_seq. apply Hf.
+    -apply IHGamma_seq.
+Qed. 
+
+
 (*(a)*)
 Lemma Gamma_seq_Cons : forall (n:nat) (Gamma Gamma_n : Ensemble Formula),
 Cons Gamma -> Gamma_seq n Gamma Gamma_n -> Cons Gamma_n.
@@ -37,6 +76,7 @@ Proof.
 Qed.
 
 (*These two axioms seem necessary for what we want to do! Better to transfer them to Cons.v*)
+(*The second one can be proved for finite ensembles and the second one seems Unnecessary!*)
 Axiom lem_for_consistency: forall Gamma: Ensemble Formula,
 Cons Gamma \/ ~Cons Gamma.
 Axiom dne_for_consistency :forall Gamma: Ensemble Formula,
@@ -66,18 +106,87 @@ Definition Gamma_star_Def  (Gamma Gamma_star: Ensemble Formula):Prop:=
     (forall f:Formula,In Formula Gamma_star f -> exists (n':nat)(Gamma_n':Ensemble Formula),Gamma_seq n' Gamma Gamma_n' /\ In Formula Gamma_n' f).
 
 
+(*for the next lemma!!!:*)
+Lemma Gamma_n_equality: forall (Gamma Gamma_n Gamma_n': Ensemble Formula) (n:nat),
+Gamma_seq n Gamma Gamma_n -> Gamma_seq n Gamma Gamma_n' -> Gamma_n = Gamma_n'.
+Admitted.
+
+Lemma Gamma_n_increasing : forall (Gamma Gamma_n Gamma_m: Ensemble Formula) (n:nat),
+Gamma_seq n Gamma Gamma_n -> Gamma_seq (S n) Gamma Gamma_m -> Included Formula Gamma_n Gamma_m.
+Proof.
+    intros Gamma Gamma_n Gamma_m n H0 H1.
+    assert (H:Cons (Union Formula Gamma_n (Singleton Formula (F n)))  \/  ~Cons (Union Formula Gamma_n (Singleton Formula (F n)))).
+    -apply lem_for_consistency.
+    -destruct H.
+    --apply consis in H0. 
+    ---assert(H2:Gamma_m = Union Formula Gamma_n (Singleton Formula (F n))).
+    ----apply Gamma_n_equality with (Gamma:=Gamma)(n:=S n).
+    -----apply H1. -----apply H0.
+    ----rewrite -> H2. unfold Included. intros f H9. apply Union_introl. apply H9.
+    ---apply H.
+    --apply iconsis in H0.
+    ---assert(H2:Gamma_m = Gamma_n).
+    ----apply Gamma_n_equality with (Gamma:=Gamma)(n:=S n).
+    -----apply H1. -----apply H0.
+    ----unfold Included. intros f H9. rewrite -> H2. apply H9.
+    ---apply H.
+Qed.
+
+Lemma Gamma_n_chain : forall (Gamma Gamma' Gamma'': Ensemble Formula) (n m:nat),
+Gamma_seq n Gamma Gamma' -> Gamma_seq (n+m) Gamma Gamma'' -> Included Formula Gamma' Gamma''.
+intros Gamma Gamma_n Gamma_m n m H1 H2.
+Admitted.
+
+
+Lemma Gamma_n_weakening: forall (Gamma Gamma_n Gamma_n' : Ensemble Formula) (n m :nat) (f : Formula),
+Gamma_seq n Gamma Gamma_n -> Gamma_seq (n+m) Gamma Gamma_n' -> Gamma_n |- f -> Gamma_n' |- f.
+Proof.
+    intros Gamma Gamma_n Gamma_n' n m f H1 H2 H3.
+    assert (H4: Included Formula Gamma_n Gamma_n').
+    -apply Gamma_n_chain with (Gamma:=Gamma) (n:=n) (m:=m).
+    --apply H1. --apply H2. 
+    -assert (H5: Gamma_n' = Union Formula Gamma_n' Gamma_n).
+    --rewrite -> Union_absorbs.
+    ---reflexivity.
+    ---apply H4.
+    --rewrite <- Union_commutative in H5. rewrite -> H5. apply Strong_Weakening. apply H3.
+Qed.
+    
+
+
 (*for (b) again*)
 Lemma Gamma_star_Prop: forall (Gamma Gamma_star:Ensemble Formula) (f:Formula),
 Gamma_star_Def Gamma Gamma_star-> Gamma_star |- f ->
 exists (n:nat) (Gamma_n:Ensemble Formula), Gamma_seq n Gamma Gamma_n /\
 Gamma_n |- f.
 intros Gamma Gamma_star f H H0.
+induction H0. rename C into Gamma_star. 
++admit.
++apply IHND in H. destruct H as [n]. destruct H as [Gamma_n]. exists n. exists Gamma_n.
+split. -apply H. -destruct H. apply conjE1 in H1. apply H1.
++apply IHND in H. destruct H as [n]. destruct H as [Gamma_n]. exists n. exists Gamma_n.
+split. -apply H. -destruct H. apply conjE2 in H1. apply H1.
++assert (H1: Gamma_star_Def Gamma C). -apply H. -apply IHND1 in H. apply IHND2 in H1.
+destruct H as [n]. destruct H as [Gamma_n]. destruct H1 as [n']. destruct H0 as [Gamma_n']. admit.
++admit.
++apply IHND in H. destruct H as [n]. destruct H as [Gamma_n]. exists n. exists Gamma_n. destruct H.
+split. -apply H. -apply disjI1. apply H1.
++apply IHND in H. destruct H as [n]. destruct H as [Gamma_n]. exists n. exists Gamma_n. destruct H.
+split. -apply H. -apply disjI2. apply H1.
++assert (H1:Gamma_star_Def Gamma C). -apply H. -apply IHND1 in H. apply IHND2 in H1.
+destruct H as [n]. destruct H as [Gamma_n]. destruct H1 as [n']. destruct H0 as [Gamma_n'].
+ admit.
++admit.
++admit.
++
+
+
 assert (H1:exists n:nat, F n = f). -apply F_Prop_surjective.
 -destruct H1 as [n]. exists n. pose proof Gamma_n_exists as H2.
 destruct H2 with (Gamma:=Gamma) (n:=n) as [Gamma_n]. exists Gamma_n.
 split.
 --apply H3.
---Admitted.
+--assert (H4: ).
 
 
 (*(b)*)

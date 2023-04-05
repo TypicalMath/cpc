@@ -119,7 +119,7 @@ Proof.
     Qed. 
 
 
-    Lemma Strong_Weakening: forall(C G:Ensemble Formula) (f :Formula), C |- f -> Union Formula C G |- f.
+Lemma Strong_Weakening: forall(C G:Ensemble Formula) (f :Formula), C |- f -> Union Formula C G |- f.
     intros C G f H. induction H.
     +apply ax. apply Union_introl. apply H.
     +apply conjE1 in IHND. apply IHND.
