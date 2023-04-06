@@ -96,6 +96,12 @@ Lemma about_Union: forall (A:Ensemble Formula)(f1 f2: Formula),
     rewrite ->Union_associative. reflexivity.  
 Qed.
 
+Lemma Union_Prop : forall (U:Type) (A B: Ensemble U) (x:U),
+Included U (Union U A (Singleton U (x))) B -> Included U A B /\ In U B x.
+intros U A B x. split. -unfold Included. intros. unfold Included in H. apply H. apply Union_introl. apply H0.
+-unfold Included in H. apply H. apply Union_intror. apply In_singleton.
+Qed.
+
 Lemma Weakening: forall(C:Ensemble Formula) (f1 f2:Formula), C |- f1 -> Union Formula C (Singleton Formula f2) |- f1.
 Proof.
     intros C f1 f2 H. induction H.
