@@ -2,13 +2,6 @@ From Coq Require Import Sets.Ensembles.
 From Coq Require Import Sets.Powerset_facts.
 Require Import Logic_and_Set_Theory.
 
-(*These should transfer to Logic_and_Set_Theory.v:*)
-(*A useful lemma for working with the definition of consistency.*)
-Lemma prop_double_neg_I : forall P:Prop, P -> ~~P.
-intros P H H1. apply H1 in H. apply H.
-Qed. 
-(*----------------------------------*)
-
 
 
 
@@ -33,6 +26,10 @@ Proof.
     apply H. apply H1.
     Qed.
 
+(*The following axiom seems necessary for what we want to do! Better to transfer it to Cons.v*)
+(*It seems possible to prove it, while defining Gamma as a finite ensemble, which may be sufficient to satisfy our needs!*)
+Axiom lem_for_consistency: forall Gamma: Ensemble Formula,
+Cons Gamma \/ ~Cons Gamma.
 
 
 

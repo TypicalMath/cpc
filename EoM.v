@@ -58,12 +58,7 @@ Proof.
     +apply IHGamma_seq. apply H.
 Qed.
 
-(*These two axioms seem necessary for what we want to do! Better to transfer them to Cons.v*)
-(*The second one can be proved for finite ensembles and the second one seems Unnecessary!*)
-Axiom lem_for_consistency: forall Gamma: Ensemble Formula,
-Cons Gamma \/ ~Cons Gamma.
-Axiom dne_for_consistency :forall Gamma: Ensemble Formula,
-~Cons Gamma -> Gamma |- ~T. 
+
 
 (*For (b) and (c):For every n and Gamma exists Gamma_n*)
 Lemma Gamma_n_exists : forall (Gamma: Ensemble Formula) (n:nat) , 
@@ -93,6 +88,7 @@ Definition Gamma_star_Def  (Gamma Gamma_star: Ensemble Formula):Prop:=
 (*for the next lemma!!!:*)
 Lemma Gamma_n_equality: forall (Gamma Gamma_n Gamma_n': Ensemble Formula) (n:nat),
 Gamma_seq n Gamma Gamma_n -> Gamma_seq n Gamma Gamma_n' -> Gamma_n = Gamma_n'.
+intros Gamma Gamma_n Gamma_n' n H1 H2.
 Admitted.
 
 Lemma Gamma_n_increasing : forall (Gamma Gamma_n Gamma_m: Ensemble Formula) (n:nat),

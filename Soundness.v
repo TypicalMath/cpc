@@ -5,23 +5,6 @@ From Coq Require Import Bool.
 From Coq Require Import Constructive_sets.
 
 
-Lemma Oral: forall (f1 f2 : bool),
-(orb f1 f2) = true <-> (f1 = false -> f2 = true) \/ (f2 = false -> f1 = true) \/ ( f1=true /\ f2=true ).
-Proof.
-Admitted.
-Lemma Classic_or : forall (f1 f2: bool),
-(orb f1 f2) = true <-> (f1 = true /\ f2 = false) \/ (f2 = true /\ f1 = false) \/ (f1 = true /\ f2 = true).
-Proof. split.
--intros H. destruct f1. destruct f2. 
-+right. right. split. ++reflexivity. ++reflexivity. 
-+left. split. ++reflexivity. ++reflexivity.
-+right. left. split. ++apply orb_true_iff in H. destruct H. +++discriminate. +++apply H. ++reflexivity.
--destruct f1. destruct f2.
-+intros H. simpl. reflexivity.
-+intros H. simpl. reflexivity.
-+intros H. destruct H. ++destruct H. discriminate. ++ destruct H. +++destruct H. rewrite -> H.
-simpl. reflexivity. +++destruct H. discriminate.
-Qed.
 
 
 Theorem Soundness: forall (Gamma:Ensemble Formula) (f:Formula) , 

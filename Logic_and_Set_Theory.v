@@ -73,13 +73,6 @@ Notation "Gamma |='' f" := (sfSf Gamma f) (at level 20, left associativity).
 
 
 
-
-(*Proof by Contradiction*)
-Axiom pbc : forall (P: Prop), (~P -> False) -> P.
-Axiom dnegE1 : forall P:Prop, (~~P->P).
-Axiom dnegE2 : forall P:Prop, (P->~~P).
-Axiom excluded_middle : forall P:Prop, P \/ ~P.
-
 Lemma Union_In : forall (U:Type) (A B : Ensemble U) (x:U),
 In U A x \/ In U B x -> In U (Union U A B) x.
 intros U A B x H. destruct H.
@@ -132,3 +125,9 @@ Lemma Strong_Weakening: forall(C G:Ensemble Formula) (f :Formula), C |- f -> Uni
     +apply conjE2 in IHND. apply IHND.
     +apply conjI. -apply IHND1. -apply IHND2.
     Admitted.
+
+
+(*A useful lemma for working with the definition of consistency.*)
+Lemma prop_double_neg_I : forall P:Prop, P -> ~~P.
+intros P H H1. apply H1 in H. apply H.
+Qed. 
